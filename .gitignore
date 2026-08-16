@@ -1,0 +1,20 @@
+# Entorno
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Secretos
+.env
+
+# Datos (opcional: comenta estas líneas si SÍ quieres versionar los CSV generados)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Sistema
+.DS_Store
+.idea/
+.vscode/
+*.log

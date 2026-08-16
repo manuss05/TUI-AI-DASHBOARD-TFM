@@ -1,6 +1,7 @@
 """
-Configuración central del proyecto.
-Carga variables de entorno desde .env y define rutas y parámetros comunes.
+Configuración central del proyecto — Ámbito Territorial: España (Nacional).
+Carga variables de entorno desde .env y define rutas, parámetros comunes
+y el catálogo oficial de las 52 provincias y ciudades autónomas de España.
 """
 import os
 from pathlib import Path
@@ -12,32 +13,73 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_RAW_DIR = BASE_DIR / "data" / "raw"
 DATA_PROCESSED_DIR = BASE_DIR / "data" / "processed"
+DATA_LOGS_DIR = BASE_DIR / "data" / "logs"
 
 DATA_RAW_DIR.mkdir(parents=True, exist_ok=True)
 DATA_PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
+DATA_LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
 # --- Claves API (opcionales según la fuente) ---
 TRIPADVISOR_API_KEY = os.getenv("TRIPADVISOR_API_KEY", "")
-REDDIT_CLIENT_ID = os.getenv("REDDIT_CLIENT_ID", "")
-REDDIT_CLIENT_SECRET = os.getenv("REDDIT_CLIENT_SECRET", "")
-REDDIT_USER_AGENT = os.getenv("REDDIT_USER_AGENT", "tfm-turismo-espana/0.1")
 GOOGLE_PLACES_API_KEY = os.getenv("GOOGLE_PLACES_API_KEY", "")
 
 # --- Parámetros de red ---
 REQUEST_TIMEOUT = 30          # segundos
-DEFAULT_SLEEP_BETWEEN_CALLS = 1.0  # segundos, para respetar rate limits (Nominatim exige >=1s)
-USER_AGENT = "tfm-turismo-espana-datascience/0.1 (uso academico; contacto: tu_email@example.com)"
+DEFAULT_SLEEP_BETWEEN_CALLS = 1.1  # segundos
+USER_AGENT = "TFM-Turismo-Espana-ManuelSantos-UCM/1.0 (manuel.santos@tfm-turismo.es)"
 
-# --- Ámbito del estudio ---
-# Lista de municipios objetivo para las pruebas iniciales del pipeline.
-# En producción, sustitúyela por el listado completo de municipios del INE
-# (ver src/extractors/ine_extractor.py -> get_tables / discover).
-MUNICIPIOS_DEMO = [
-    {"nombre": "Madrid", "provincia": "Madrid", "ccaa": "Comunidad de Madrid"},
-    {"nombre": "Barcelona", "provincia": "Barcelona", "ccaa": "Cataluña"},
-    {"nombre": "Sevilla", "provincia": "Sevilla", "ccaa": "Andalucía"},
-    {"nombre": "Valencia", "provincia": "Valencia/València", "ccaa": "Comunitat Valenciana"},
-    {"nombre": "San Sebastián", "provincia": "Gipuzkoa", "ccaa": "País Vasco"},
-    {"nombre": "Santiago de Compostela", "provincia": "A Coruña", "ccaa": "Galicia"},
-    {"nombre": "Mérida", "provincia": "Badajoz", "ccaa": "Extremadura"},
+# --- Ámbito Territorial Oficial de España (50 Provincias + 2 Ciudades Autónomas) ---
+PROVINCIAS_ESPANA = [
+    {"cod_prov": "01", "nombre": "Araba/Álava", "capital": "Vitoria-Gasteiz", "ccaa": "País Vasco"},
+    {"cod_prov": "02", "nombre": "Albacete", "capital": "Albacete", "ccaa": "Castilla-La Mancha"},
+    {"cod_prov": "03", "nombre": "Alicante/Alacant", "capital": "Alicante", "ccaa": "Comunitat Valenciana"},
+    {"cod_prov": "04", "nombre": "Almería", "capital": "Almería", "ccaa": "Andalucía"},
+    {"cod_prov": "05", "nombre": "Ávila", "capital": "Ávila", "ccaa": "Castilla y León"},
+    {"cod_prov": "06", "nombre": "Badajoz", "capital": "Badajoz", "ccaa": "Extremadura"},
+    {"cod_prov": "07", "nombre": "Balears, Illes", "capital": "Palma", "ccaa": "Illes Balears"},
+    {"cod_prov": "08", "nombre": "Barcelona", "capital": "Barcelona", "ccaa": "Cataluña"},
+    {"cod_prov": "09", "nombre": "Burgos", "capital": "Burgos", "ccaa": "Castilla y León"},
+    {"cod_prov": "10", "nombre": "Cáceres", "capital": "Cáceres", "ccaa": "Extremadura"},
+    {"cod_prov": "11", "nombre": "Cádiz", "capital": "Cádiz", "ccaa": "Andalucía"},
+    {"cod_prov": "12", "nombre": "Castellón/Castelló", "capital": "Castellón de la Plana", "ccaa": "Comunitat Valenciana"},
+    {"cod_prov": "13", "nombre": "Ciudad Real", "capital": "Ciudad Real", "ccaa": "Castilla-La Mancha"},
+    {"cod_prov": "14", "nombre": "Córdoba", "capital": "Córdoba", "ccaa": "Andalucía"},
+    {"cod_prov": "15", "nombre": "A Coruña", "capital": "A Coruña", "ccaa": "Galicia"},
+    {"cod_prov": "16", "nombre": "Cuenca", "capital": "Cuenca", "ccaa": "Castilla-La Mancha"},
+    {"cod_prov": "17", "nombre": "Girona", "capital": "Girona", "ccaa": "Cataluña"},
+    {"cod_prov": "18", "nombre": "Granada", "capital": "Granada", "ccaa": "Andalucía"},
+    {"cod_prov": "19", "nombre": "Guadalajara", "capital": "Guadalajara", "ccaa": "Castilla-La Mancha"},
+    {"cod_prov": "20", "nombre": "Gipuzkoa", "capital": "Donostia/San Sebastián", "ccaa": "País Vasco"},
+    {"cod_prov": "21", "nombre": "Huelva", "capital": "Huelva", "ccaa": "Andalucía"},
+    {"cod_prov": "22", "nombre": "Huesca", "capital": "Huesca", "ccaa": "Aragón"},
+    {"cod_prov": "23", "nombre": "Jaén", "capital": "Jaén", "ccaa": "Andalucía"},
+    {"cod_prov": "24", "nombre": "León", "capital": "León", "ccaa": "Castilla y León"},
+    {"cod_prov": "25", "nombre": "Lleida", "capital": "Lleida", "ccaa": "Cataluña"},
+    {"cod_prov": "26", "nombre": "La Rioja", "capital": "Logroño", "ccaa": "La Rioja"},
+    {"cod_prov": "27", "nombre": "Lugo", "capital": "Lugo", "ccaa": "Galicia"},
+    {"cod_prov": "28", "nombre": "Madrid", "capital": "Madrid", "ccaa": "Comunidad de Madrid"},
+    {"cod_prov": "29", "nombre": "Málaga", "capital": "Málaga", "ccaa": "Andalucía"},
+    {"cod_prov": "30", "nombre": "Murcia", "capital": "Murcia", "ccaa": "Región de Murcia"},
+    {"cod_prov": "31", "nombre": "Navarra", "capital": "Pamplona/Iruña", "ccaa": "Comunidad Foral de Navarra"},
+    {"cod_prov": "32", "nombre": "Ourense", "capital": "Ourense", "ccaa": "Galicia"},
+    {"cod_prov": "33", "nombre": "Asturias", "capital": "Oviedo", "ccaa": "Principado de Asturias"},
+    {"cod_prov": "34", "nombre": "Palencia", "capital": "Palencia", "ccaa": "Castilla y León"},
+    {"cod_prov": "35", "nombre": "Las Palmas", "capital": "Las Palmas de Gran Canaria", "ccaa": "Canarias"},
+    {"cod_prov": "36", "nombre": "Pontevedra", "capital": "Pontevedra", "ccaa": "Galicia"},
+    {"cod_prov": "37", "nombre": "Salamanca", "capital": "Salamanca", "ccaa": "Castilla y León"},
+    {"cod_prov": "38", "nombre": "Santa Cruz de Tenerife", "capital": "Santa Cruz de Tenerife", "ccaa": "Canarias"},
+    {"cod_prov": "39", "nombre": "Cantabria", "capital": "Santander", "ccaa": "Cantabria"},
+    {"cod_prov": "40", "nombre": "Segovia", "capital": "Segovia", "ccaa": "Castilla y León"},
+    {"cod_prov": "41", "nombre": "Sevilla", "capital": "Sevilla", "ccaa": "Andalucía"},
+    {"cod_prov": "42", "nombre": "Soria", "capital": "Soria", "ccaa": "Castilla y León"},
+    {"cod_prov": "43", "nombre": "Tarragona", "capital": "Tarragona", "ccaa": "Cataluña"},
+    {"cod_prov": "44", "nombre": "Teruel", "capital": "Teruel", "ccaa": "Aragón"},
+    {"cod_prov": "45", "nombre": "Toledo", "capital": "Toledo", "ccaa": "Castilla-La Mancha"},
+    {"cod_prov": "46", "nombre": "Valencia/València", "capital": "València", "ccaa": "Comunitat Valenciana"},
+    {"cod_prov": "47", "nombre": "Valladolid", "capital": "Valladolid", "ccaa": "Castilla y León"},
+    {"cod_prov": "48", "nombre": "Bizkaia", "capital": "Bilbao", "ccaa": "País Vasco"},
+    {"cod_prov": "49", "nombre": "Zamora", "capital": "Zamora", "ccaa": "Castilla y León"},
+    {"cod_prov": "50", "nombre": "Zaragoza", "capital": "Zaragoza", "ccaa": "Aragón"},
+    {"cod_prov": "51", "nombre": "Ceuta", "capital": "Ceuta", "ccaa": "Ciudad Autónoma de Ceuta"},
+    {"cod_prov": "52", "nombre": "Melilla", "capital": "Melilla", "ccaa": "Ciudad Autónoma de Melilla"},
 ]

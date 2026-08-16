@@ -1,59 +1,108 @@
 """
-Extractor de datos.gob.es — catálogo nacional de datos abiertos
-(agrega datasets de ministerios, comunidades autónomas y ayuntamientos,
-muchos de ellos sobre turismo, ocupación hotelera, pernoctaciones, etc.).
+Extractor de datos.gob.es — Catálogo Nacional de Datos Abiertos de España.
 
-API real ("apidata"): https://datos.gob.es/es/apidata
-Portal de documentación: https://datos.gob.es/es/accessible-apis
+API pública sin clave: https://datos.gob.es/apidata/catalog/dataset.json
+Localiza recursos descargables (CSV, XLSX, JSON) sobre turismo publicados por
+ministerios, comunidades autónomas y ayuntamientos de España.
 
-No requiere clave. Este extractor NO descarga los datos finales (el
-formato de cada dataset lo decide su publicador: CSV, XLSX, JSON, API
-propia...), sino que busca datasets relevantes y expone sus recursos
-descargables, para que decidas cuáles incorporar al pipeline (muchos
-ayuntamientos/CCAA publican aquí sus propias estadísticas turísticas
-municipales, que es justo el nivel de detalle que el INE no siempre
-ofrece).
+Convención de columnas de salida: DatosGob.*
 """
+from __future__ import annotations
+
 from datetime import datetime
+from typing import Optional
+
 import pandas as pd
+import requests
+
 from src.utils.http_client import HttpClient
 from src.utils.logger import get_logger
+from config.settings import USER_AGENT
 
 logger = get_logger(__name__)
 
-BASE_URL = "https://datos.gob.es/apidata/catalog/dataset"
+BASE_URL = "https://datos.gob.es/apidata/catalog/dataset.json"
+_HEADERS = {
+    "Accept": "application/json",
+    "User-Agent": USER_AGENT,
+}
+
+
+def _extract_text(field: any) -> str:
+    """Extrae texto de estructuras literales simples o multilingües de datos.gob.es."""
+    if isinstance(field, str):
+        return field
+    elif isinstance(field, dict):
+        return field.get("_value", "")
+    elif isinstance(field, list) and len(field) > 0:
+        for item in field:
+            if isinstance(item, dict) and item.get("_lang") == "es":
+                return item.get("_value", "")
+        return _extract_text(field[0])
+    return ""
 
 
 class DatosGobExtractor:
-    def __init__(self):
+    """Buscador de datasets turísticos en el catálogo nacional datos.gob.es."""
+
+    def __init__(self) -> None:
         self.client = HttpClient()
 
-    def search_datasets(self, keyword: str, limit: int = 20) -> pd.DataFrame:
+    def search_datasets(
+        self, keyword: str = "turismo", limit: int = 100
+    ) -> pd.DataFrame:
         """
-        Busca datasets por palabra clave (p.ej. "turismo", "ocupación
-        hotelera", "pernoctaciones", "<nombre_municipio> turismo").
+        Descarga los datasets más recientes del catálogo nacional y filtra por keyword.
+
+        Columnas de salida: DatosGob.*
         """
-        params = {"q": keyword, "_pageSize": limit}
+        logger.info(
+            "[DatosGob] ▶ Buscando datasets relacionados con '%s' en el catálogo nacional...",
+            keyword,
+        )
+        params = {"_pageSize": limit, "_sort": "-modified"}
         try:
-            resp = self.client.get(f"{BASE_URL}.json", params=params)
+            resp = requests.get(BASE_URL, params=params, headers=_HEADERS, timeout=15)
+            resp.raise_for_status()
             data = resp.json()
-        except Exception as e:
-            logger.warning("Fallo consultando datos.gob.es para '%s': %s", keyword, e)
-            return pd.DataFrame(columns=["titulo_dataset", "descripcion", "url_recurso", "formato", "publicador"])
+        except Exception as exc:
+            logger.warning("[DatosGob] ✗ Error consultando el catálogo: %s", exc)
+            return pd.DataFrame()
 
         items = data.get("result", {}).get("items", []) if isinstance(data, dict) else []
         rows = []
+        kw_lower = keyword.lower()
+
         for item in items:
-            titulo = item.get("title", {}).get("_value") if isinstance(item.get("title"), dict) else item.get("title")
-            descripcion = item.get("description", {}).get("_value") if isinstance(item.get("description"), dict) else item.get("description")
-            publicador = item.get("publisher")
-            for dist in item.get("distribution", []):
-                rows.append({
-                    "titulo_dataset": titulo,
-                    "descripcion": descripcion,
-                    "url_recurso": dist.get("accessURL") or dist.get("downloadURL"),
-                    "formato": dist.get("format"),
-                    "publicador": publicador,
-                    "fecha_extraccion": datetime.utcnow().isoformat(),
-                })
-        return pd.DataFrame(rows)
+            titulo = _extract_text(item.get("title"))
+            descripcion = _extract_text(item.get("description"))
+            publicador = _extract_text(item.get("publisher"))
+
+            if kw_lower in titulo.lower() or kw_lower in descripcion.lower():
+                distributions = item.get("distribution", [])
+                if isinstance(distributions, dict):
+                    distributions = [distributions]
+
+                for dist in distributions:
+                    if isinstance(dist, dict):
+                        url_rec = dist.get("accessURL") or dist.get("downloadURL")
+                        formato = dist.get("format")
+                        if isinstance(formato, dict):
+                            formato = formato.get("_value")
+
+                        rows.append({
+                            "DatosGob.titulo_dataset": titulo,
+                            "DatosGob.descripcion":    descripcion,
+                            "DatosGob.url_recurso":    url_rec,
+                            "DatosGob.formato":        formato,
+                            "DatosGob.publicador":     publicador,
+                            "DatosGob.fuente":         "datos.gob.es",
+                            "_meta.fecha_extraccion":  datetime.utcnow().isoformat(),
+                        })
+
+        df = pd.DataFrame(rows)
+        logger.info(
+            "[DatosGob] ✔ '%s' → %d recursos encontrados en el catálogo.",
+            keyword, len(df),
+        )
+        return df

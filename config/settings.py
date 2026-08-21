@@ -1,15 +1,10 @@
-"""
-Configuración central del proyecto — Ámbito Territorial: España (Nacional).
-Carga variables de entorno desde .env y define rutas, parámetros comunes
-y el catálogo oficial de las 52 provincias y ciudades autónomas de España.
-"""
 import os
 from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
 
-# --- Rutas ---
+# Rutas
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_RAW_DIR = BASE_DIR / "data" / "raw"
 DATA_PROCESSED_DIR = BASE_DIR / "data" / "processed"
@@ -19,16 +14,15 @@ DATA_RAW_DIR.mkdir(parents=True, exist_ok=True)
 DATA_PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
 DATA_LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
-# --- Claves API (opcionales según la fuente) ---
-TRIPADVISOR_API_KEY = os.getenv("TRIPADVISOR_API_KEY", "")
-GOOGLE_PLACES_API_KEY = os.getenv("GOOGLE_PLACES_API_KEY", "")
+# Claves API
+AEMET_API_KEY = os.getenv("AEMET_API_KEY", "")
 
-# --- Parámetros de red ---
-REQUEST_TIMEOUT = 30          # segundos
-DEFAULT_SLEEP_BETWEEN_CALLS = 1.1  # segundos
+# Parametros de red
+REQUEST_TIMEOUT = 30
+DEFAULT_SLEEP_BETWEEN_CALLS = 1.1
 USER_AGENT = "TFM-Turismo-Espana-ManuelSantos-UCM/1.0 (manuel.santos@tfm-turismo.es)"
 
-# --- Ámbito Territorial Oficial de España (50 Provincias + 2 Ciudades Autónomas) ---
+# Provincias de Espana (50 + 2 ciudades autonomas)
 PROVINCIAS_ESPANA = [
     {"cod_prov": "01", "nombre": "Araba/Álava", "capital": "Vitoria-Gasteiz", "ccaa": "País Vasco"},
     {"cod_prov": "02", "nombre": "Albacete", "capital": "Albacete", "ccaa": "Castilla-La Mancha"},

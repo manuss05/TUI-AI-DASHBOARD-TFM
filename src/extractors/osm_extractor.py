@@ -1,16 +1,4 @@
-"""
-Extractor de OpenStreetMap (Nominatim + Overpass con Multi-Mirror y Fallback Rápido).
-
-Servicios usados:
-  1. Nominatim  — Geocodificación y conteo de POIs fiable con User-Agent institucional.
-  2. Overpass   — Conteo de POIs turísticos por coordenadas (hoteles, restaurantes, atracciones, museos).
-     - Timeout rápido (3.5s por mirror) para no ralentizar el pipeline.
-     - Fallback automático a Nominatim si los servidores Overpass están caídos o saturados.
-
-Convención de columnas:
-  - Geocodificación: OSM_Nominatim.<nombre>
-  - Oferta/POIs:    OSM_Overpass.<nombre>
-"""
+"""Extractor de OpenStreetMap (Nominatim + Overpass) — geocodificacion y POIs turisticos."""
 from __future__ import annotations
 
 import time
@@ -36,7 +24,7 @@ _HEADERS = {"User-Agent": USER_AGENT}
 
 
 class OSMExtractor:
-    """Extractor robusto de OpenStreetMap con redundancia y fallbacks rápidos."""
+    """Extractor OSM con Overpass multi-mirror y fallback Nominatim."""
 
     def __init__(self) -> None:
         self.client = HttpClient(min_interval=1.0)
@@ -151,16 +139,13 @@ class OSMExtractor:
                             res = dict(zip(keys, counts[:4]))
                             res["OSM_Overpass.fuente"] = f"Overpass ({mirror.split('/')[2]})"
                             res["OSM_Overpass.fecha_extraccion"] = datetime.utcnow().isoformat()
-                            logger.info(
-                                "[OSM] ✔ %s → hoteles=%d, restaurantes=%d, atracciones=%d, museos=%d [vía %s]",
-                                municipio, res[keys[0]], res[keys[1]], res[keys[2]], res[keys[3]], res["OSM_Overpass.fuente"]
-                            )
+                            logger.info("[OSM] %s -> %d POIs", municipio, sum(counts[:4]))
                             return res
                 except Exception:
                     continue
 
         # ── Intento B: Fallback a Nominatim ──────────────────────────────
-        logger.info("[OSM] ↪ Overpass no disponible para '%s'; usando fallback Nominatim...", municipio)
+        logger.info("[OSM] Fallback Nominatim para '%s'", municipio)
         try:
             res_nom = {}
             for cat, k in [("hotel", keys[0]), ("restaurante", keys[1]), ("turismo", keys[2]), ("museo", keys[3])]:
@@ -174,13 +159,10 @@ class OSMExtractor:
 
             res_nom["OSM_Overpass.fuente"] = "OSM_Nominatim_Fallback"
             res_nom["OSM_Overpass.fecha_extraccion"] = datetime.utcnow().isoformat()
-            logger.info(
-                "[OSM] ✔ %s (Fallback Nominatim) → hoteles=%d, restaurantes=%d, atracciones=%d, museos=%d",
-                municipio, res_nom[keys[0]], res_nom[keys[1]], res_nom[keys[2]], res_nom[keys[3]]
-            )
+            logger.info("[OSM] %s -> fallback OK", municipio)
             return res_nom
         except Exception as exc:
-            logger.warning("[OSM] ✗ Fallback Nominatim falló para '%s': %s", municipio, exc)
+            logger.warning("[OSM] Fallback fallo '%s': %s", municipio, exc)
 
         return {k: 0 for k in keys} | {
             "OSM_Overpass.fuente": "Sin_Dato_OSM",

@@ -1,19 +1,4 @@
-"""
-Modelo relacional del proyecto — Ámbito Nacional de España.
-
-Niveles territoriales:
-  1. `provincias`: Las 52 provincias y ciudades autónomas oficiales de España,
-     con códigos INE de 2 dígitos, población oficial y CCAA.
-  2. `municipios_espana`: El censo oficial completo de los 8.138 municipios de España
-     procedente del Padrón Continuo del INE (Tabla 29005).
-  3. `localidades`: Localidades geocodificadas con coordenadas IGN/OSM y cod_ine.
-  4. `flujo_ine_provincia`: Series temporales mensuales de viajeros y pernoctaciones
-     para todas las provincias y CCAA de España (INE EOH Tabla 2074).
-  5. `flujo_ine_localidad`: Series temporales mensuales de viajeros y pernoctaciones
-     para los 113 puntos turísticos clave de España (INE EOH Tabla 2078).
-  6. `oferta_osm`: Métricas de POIs de alojamiento y turismo.
-  7. `datosgob_catalogo`: Catálogo nacional de datasets abiertos sobre turismo.
-"""
+"""Esquema relacional del proyecto."""
 
 TABLE_SCHEMAS = {
     "provincias": [
@@ -53,6 +38,16 @@ TABLE_SCHEMAS = {
     "datosgob_catalogo": [
         "DatosGob.titulo_dataset", "DatosGob.descripcion", "DatosGob.url_recurso",
         "DatosGob.formato", "DatosGob.publicador", "DatosGob.fuente",
+        "_meta.fecha_extraccion"
+    ],
+    "clima_aemet": [
+        "AEMET_Clima.cod_ine", "AEMET_Clima.nombre_municipio", "AEMET_Clima.provincia",
+        "AEMET_Clima.fecha_prediccion", "AEMET_Clima.temp_max", "AEMET_Clima.temp_min",
+        "AEMET_Clima.sens_termica_max", "AEMET_Clima.sens_termica_min",
+        "AEMET_Clima.humedad_max", "AEMET_Clima.humedad_min",
+        "AEMET_Clima.prob_precipitacion_pct", "AEMET_Clima.estado_cielo_desc",
+        "AEMET_Clima.viento_dir", "AEMET_Clima.viento_vel_kmh", "AEMET_Clima.uv_max",
+        "AEMET_Clima.fuente", "_meta.cod_ine_clave", "_meta.nombre_municipio",
         "_meta.fecha_extraccion"
     ]
 }

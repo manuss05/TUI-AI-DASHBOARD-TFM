@@ -1,19 +1,4 @@
-"""
-Extractor del IGN (Instituto Geográfico Nacional) vía CartoCiudad con geolocalización enriquecida.
-
-Endpoint verificado en producción:
-  https://www.cartociudad.es/geocoder/api/geocoder/candidates?q=<municipio>&limit=1
-
-Respuesta JSON incluye:
-  muniCode   → código INE de 5 dígitos del municipio (clave relacional)
-  province   → nombre de la provincia
-  comunidadAutonoma → nombre de la CCAA
-
-Si las coordenadas vienen en 0.0 (comportamiento estándar de CartoCiudad para entidades de tipo población),
-se enriquecen automáticamente con OSM Nominatim para obtener latitud y longitud precisas.
-
-Convención de columnas de salida: CartoCiudad.<nombre>
-"""
+"""Extractor del IGN via CartoCiudad — geocodificacion con enriquecimiento Nominatim."""
 from __future__ import annotations
 
 import time
@@ -82,16 +67,9 @@ class IGNExtractor:
                 "_meta.fuente_geocod":          "CartoCiudad+IGN",
                 "_meta.fecha_extraccion":       datetime.utcnow().isoformat(),
             }
-            logger.info(
-                "[CartoCiudad] ✔ %s → cod_ine=%s, prov=%s, lat=%.4f, lon=%.4f",
-                municipio,
-                result["CartoCiudad.cod_ine"],
-                result["CartoCiudad.provincia"],
-                result["CartoCiudad.latitud"],
-                result["CartoCiudad.longitud"],
-            )
+            logger.info("[CartoCiudad] %s -> %s", municipio, result["CartoCiudad.cod_ine"])
             return result
 
         except Exception as exc:
-            logger.warning("[CartoCiudad] ✗ Error geocodificando '%s': %s", municipio, exc)
+            logger.warning("[CartoCiudad] Error '%s': %s", municipio, exc)
             return None

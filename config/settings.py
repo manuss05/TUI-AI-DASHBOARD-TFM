@@ -22,7 +22,7 @@ REQUEST_TIMEOUT = 30
 DEFAULT_SLEEP_BETWEEN_CALLS = 1.1
 USER_AGENT = "TFM-Turismo-Espana-ManuelSantos-UCM/1.0 (manuel.santos@tfm-turismo.es)"
 
-# Provincias de Espana (50 + 2 ciudades autonomas)
+# Provincias de España (50 + 2 ciudades autonomas)
 PROVINCIAS_ESPANA = [
     {"cod_prov": "01", "nombre": "Araba/Álava", "capital": "Vitoria-Gasteiz", "ccaa": "País Vasco"},
     {"cod_prov": "02", "nombre": "Albacete", "capital": "Albacete", "ccaa": "Castilla-La Mancha"},

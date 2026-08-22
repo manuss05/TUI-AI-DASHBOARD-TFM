@@ -25,7 +25,7 @@ copy .env.example .env
 
 ```bash
 python main.py
-python main.py --sources localidades clima_aemet
+python main.py --sources Carto_provincias clima_aemet
 ```
 
 CSV en `data/processed/`.

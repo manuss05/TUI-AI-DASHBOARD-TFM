@@ -1,7 +1,7 @@
 """Esquema relacional del proyecto."""
 
 TABLE_SCHEMAS = {
-    "provincias": [
+    "INE_provincias": [
         "INE_Pob_PROV.provincia", "INE_Pob_PROV.poblacion_total", "INE_Pob_PROV.anio",
         "INE_Pob_PROV.cod_serie", "INE_Pob_PROV.fuente", "_meta.cod_prov",
         "_meta.capital", "_meta.ccaa", "_meta.fecha_extraccion"
@@ -11,7 +11,7 @@ TABLE_SCHEMAS = {
         "INE_Pob_MUN.anio", "INE_Pob_MUN.cod_serie", "INE_Pob_MUN.fuente",
         "_meta.fecha_extraccion"
     ],
-    "localidades": [
+    "Carto_provincias": [
         "CartoCiudad.cod_ine", "CartoCiudad.nombre_municipio", "CartoCiudad.provincia",
         "CartoCiudad.ccaa", "CartoCiudad.latitud", "CartoCiudad.longitud",
         "_meta.fuente_geocod", "_meta.fecha_extraccion", "_meta.cod_ine_clave",

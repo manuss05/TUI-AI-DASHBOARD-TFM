@@ -31,9 +31,9 @@ def run_pipeline(
     n_periodos_ine: int = 12,
 ) -> None:
     all_sources = {
-        "provincias", "municipios_espana",
+        "INE_provincias", "municipios_espana",
         "flujo_ine_provincia", "flujo_ine_localidad",
-        "localidades", "turismo_oferta_osm",
+        "Carto_provincias", "turismo_oferta_osm",
         "clima_aemet", "datosgob",
     }
     sources = set(sources) if sources else all_sources
@@ -48,7 +48,7 @@ def run_pipeline(
 
     # 1. Provincias (INE Tabla 2852)
     df_prov = pd.DataFrame()
-    if "provincias" in sources:
+    if "INE_provincias" in sources:
         logger.info("--- FASE 1: Provincias (INE 2852) ---")
         try:
             df_ine_pob_prov = ine.get_maestro_provincias(n_ultimos=1)
@@ -69,7 +69,7 @@ def run_pipeline(
                 df_prov["_meta.capital"] = df_prov["INE_Pob_PROV.provincia"].apply(lambda x: _find_meta(x, capital_map))
                 df_prov["_meta.ccaa"] = df_prov["INE_Pob_PROV.provincia"].apply(lambda x: _find_meta(x, ccaa_map))
                 df_prov["_meta.fecha_extraccion"] = datetime.utcnow().isoformat()
-                save_table(df_prov, "provincias", DATA_PROCESSED_DIR)
+                save_table(df_prov, "INE_provincias", DATA_PROCESSED_DIR)
             else:
                 reporter.record("INE_Pob_PROV", "Nacional", "DataFrame vacio.")
         except Exception as exc:
@@ -113,7 +113,7 @@ def run_pipeline(
 
     # 5. Geocodificacion
     localidades_rows: list[dict] = []
-    if "localidades" in sources:
+    if "Carto_provincias" in sources:
         logger.info("--- FASE 5: Geocodificacion (CartoCiudad/IGN) ---")
         targets = [{"nombre": p["capital"], "provincia": p["nombre"], "ccaa": p["ccaa"]} for p in PROVINCIAS_ESPANA]
         for t in tqdm(targets, desc="Geocodificando"):
@@ -144,7 +144,7 @@ def run_pipeline(
                 fila["CartoCiudad.ccaa"] = t.get("ccaa", "")
             localidades_rows.append(fila)
         if localidades_rows:
-            save_table(pd.DataFrame(localidades_rows), "localidades", DATA_PROCESSED_DIR)
+            save_table(pd.DataFrame(localidades_rows), "Carto_provincias", DATA_PROCESSED_DIR)
 
     # 6. Oferta OSM
     if "turismo_oferta_osm" in sources:

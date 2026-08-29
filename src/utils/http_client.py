@@ -5,10 +5,16 @@ User-Agent identificable, algo que exigen explícitamente APIs como
 OSM Nominatim/Overpass.
 """
 import time
-import requests
-from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 
-from config.settings import REQUEST_TIMEOUT, USER_AGENT, DEFAULT_SLEEP_BETWEEN_CALLS
+import requests
+from tenacity import (
+    retry,
+    retry_if_exception_type,
+    stop_after_attempt,
+    wait_exponential,
+)
+
+from config.settings import DEFAULT_SLEEP_BETWEEN_CALLS, REQUEST_TIMEOUT, USER_AGENT
 from src.utils.logger import get_logger
 
 logger = get_logger(__name__)

@@ -1,6 +1,8 @@
 """Escritura de tablas a CSV (UTF-8 con BOM)."""
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
+
 from src.utils.logger import get_logger
 
 logger = get_logger(__name__)

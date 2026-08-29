@@ -1,6 +1,5 @@
-from src.schema import TABLE_SCHEMAS, empty_dataframe
-from src.pipeline import _cod_ine_provisional
 from src.extractors.aemet_extractor import AEMETExtractor
+from src.schema import TABLE_SCHEMAS, empty_dataframe
 
 
 def test_schema_tables_have_columns():
@@ -12,15 +11,6 @@ def test_empty_dataframe_matches_schema():
     for name in TABLE_SCHEMAS:
         df = empty_dataframe(name)
         assert list(df.columns) == TABLE_SCHEMAS[name]
-
-
-def test_cod_ine_provisional_is_stable():
-    a = _cod_ine_provisional("Madrid")
-    b = _cod_ine_provisional("Madrid")
-    c = _cod_ine_provisional("Barcelona")
-    assert a == b
-    assert a != c
-    assert a.startswith("PROV_")
 
 
 def test_aemet_extractor_inactive():

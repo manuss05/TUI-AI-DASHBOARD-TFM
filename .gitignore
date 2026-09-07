@@ -3,13 +3,12 @@
 venv/
 __pycache__/
 *.pyc
-data/logs
+Extractor/data/logs
 # Secretos
 .env
 
 # Datos (opcional: comenta estas líneas si SÍ quieres versionar los CSV generados)
-data/raw/*
-data/processed/*
+Extractor/data/processed/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 tfm-turismo-espana.zip
@@ -18,3 +17,4 @@ tfm-turismo-espana.zip
 .idea/
 .vscode/
 *.log
+.agents/

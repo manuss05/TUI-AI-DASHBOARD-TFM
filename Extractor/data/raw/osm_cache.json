@@ -1,0 +1,470 @@
+{
+  "Vitoria-Gasteiz": {
+    "query_name": "Vitoria-Gasteiz",
+    "lat": 42.8505845,
+    "lon": -2.66145,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"17\", \"ways\": \"14\", \"relations\": \"0\", \"total\": \"31\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"221\", \"ways\": \"24\", \"relations\": \"0\", \"total\": \"245\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"2\", \"ways\": \"9\", \"relations\": \"0\", \"total\": \"11\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"6\", \"ways\": \"9\", \"relations\": \"0\", \"total\": \"15\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:53:37.869530"
+  },
+  "Albacete": {
+    "query_name": "Albacete",
+    "lat": 38.9950921,
+    "lon": -1.8559154,
+    "radio_metros": 8000,
+    "mirror_usado": "https://z.overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"4\", \"ways\": \"7\", \"relations\": \"0\", \"total\": \"11\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"127\", \"ways\": \"6\", \"relations\": \"0\", \"total\": \"133\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"2\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"2\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"3\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"6\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:53:44.804802"
+  },
+  "Alicante": {
+    "query_name": "Alicante",
+    "lat": 38.3436365,
+    "lon": -0.4881708,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"30\", \"ways\": \"25\", \"relations\": \"0\", \"total\": \"55\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"491\", \"ways\": \"35\", \"relations\": \"0\", \"total\": \"526\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"11\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"14\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"5\", \"ways\": \"7\", \"relations\": \"0\", \"total\": \"12\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:54:33.468352"
+  },
+  "Almería": {
+    "query_name": "Almería",
+    "lat": 36.8685739,
+    "lon": -2.3120282,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"5\", \"relations\": \"0\", \"total\": \"5\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"11\", \"ways\": \"5\", \"relations\": \"0\", \"total\": \"16\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"1\", \"relations\": \"0\", \"total\": \"1\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:54:57.258838"
+  },
+  "Ávila": {
+    "query_name": "Ávila",
+    "lat": 40.657195,
+    "lon": -4.6626677,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"9\", \"ways\": \"12\", \"relations\": \"0\", \"total\": \"21\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"56\", \"ways\": \"7\", \"relations\": \"0\", \"total\": \"63\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"6\", \"ways\": \"8\", \"relations\": \"0\", \"total\": \"14\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"7\", \"ways\": \"1\", \"relations\": \"0\", \"total\": \"8\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:54:59.556319"
+  },
+  "Badajoz": {
+    "query_name": "Badajoz",
+    "lat": 38.878187,
+    "lon": -6.9701115,
+    "radio_metros": 8000,
+    "mirror_usado": "https://z.overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"3\", \"ways\": \"9\", \"relations\": \"0\", \"total\": \"12\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"83\", \"ways\": \"10\", \"relations\": \"0\", \"total\": \"93\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"2\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"5\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"1\", \"ways\": \"4\", \"relations\": \"0\", \"total\": \"5\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:55:13.150581"
+  },
+  "Palma": {
+    "query_name": "Palma",
+    "lat": 39.5695818,
+    "lon": 2.6500745,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"25\", \"ways\": \"114\", \"relations\": \"0\", \"total\": \"139\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"535\", \"ways\": \"80\", \"relations\": \"0\", \"total\": \"615\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"19\", \"ways\": \"4\", \"relations\": \"0\", \"total\": \"23\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"3\", \"ways\": \"10\", \"relations\": \"0\", \"total\": \"13\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:55:52.949763"
+  },
+  "Barcelona": {
+    "query_name": "Barcelona",
+    "lat": 41.3825802,
+    "lon": 2.177073,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"357\", \"ways\": \"152\", \"relations\": \"0\", \"total\": \"509\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"3984\", \"ways\": \"57\", \"relations\": \"0\", \"total\": \"4041\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"55\", \"ways\": \"54\", \"relations\": \"0\", \"total\": \"109\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"61\", \"ways\": \"29\", \"relations\": \"0\", \"total\": \"90\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:56:17.647266"
+  },
+  "Burgos": {
+    "query_name": "Burgos",
+    "lat": 42.3448498,
+    "lon": -3.6812477,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"49\", \"ways\": \"4\", \"relations\": \"0\", \"total\": \"53\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"289\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"292\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"4\", \"ways\": \"1\", \"relations\": \"0\", \"total\": \"5\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"9\", \"ways\": \"4\", \"relations\": \"0\", \"total\": \"13\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:56:20.315106"
+  },
+  "Cáceres": {
+    "query_name": "Cáceres",
+    "lat": 39.4745175,
+    "lon": -6.3716761,
+    "radio_metros": 8000,
+    "mirror_usado": "https://z.overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"17\", \"ways\": \"11\", \"relations\": \"0\", \"total\": \"28\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"93\", \"ways\": \"11\", \"relations\": \"0\", \"total\": \"104\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"5\", \"ways\": \"1\", \"relations\": \"0\", \"total\": \"6\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"10\", \"ways\": \"5\", \"relations\": \"0\", \"total\": \"15\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:56:25.589847"
+  },
+  "Cádiz": {
+    "query_name": "Cádiz",
+    "lat": 36.5297438,
+    "lon": -6.2928976,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"21\", \"ways\": \"14\", \"relations\": \"0\", \"total\": \"35\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"199\", \"ways\": \"16\", \"relations\": \"0\", \"total\": \"215\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"7\", \"ways\": \"85\", \"relations\": \"0\", \"total\": \"92\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"8\", \"ways\": \"9\", \"relations\": \"0\", \"total\": \"17\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:57:18.559031"
+  },
+  "Castellón de la Plana": {
+    "query_name": "Castellón de la Plana",
+    "lat": 39.9860347,
+    "lon": -0.0377354,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"12\", \"ways\": \"4\", \"relations\": \"0\", \"total\": \"16\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"208\", \"ways\": \"7\", \"relations\": \"0\", \"total\": \"215\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"5\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"5\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"10\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"13\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:57:41.705200"
+  },
+  "Ciudad Real": {
+    "query_name": "Ciudad Real",
+    "lat": 38.9597347,
+    "lon": -3.8828744,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"8\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"11\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"15\", \"ways\": \"4\", \"relations\": \"0\", \"total\": \"19\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"2\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"2\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"4\", \"ways\": \"2\", \"relations\": \"0\", \"total\": \"6\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:57:43.832757"
+  },
+  "Córdoba": {
+    "query_name": "Córdoba",
+    "lat": 37.8845813,
+    "lon": -4.7760138,
+    "radio_metros": 8000,
+    "mirror_usado": "https://z.overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"63\", \"ways\": \"7\", \"relations\": \"0\", \"total\": \"70\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"351\", \"ways\": \"10\", \"relations\": \"0\", \"total\": \"361\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"29\", \"ways\": \"24\", \"relations\": \"0\", \"total\": \"53\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"14\", \"ways\": \"4\", \"relations\": \"0\", \"total\": \"18\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:57:45.912160"
+  },
+  "A Coruña": {
+    "query_name": "A Coruña",
+    "lat": 43.3466447,
+    "lon": -8.4127029,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"31\", \"ways\": \"21\", \"relations\": \"0\", \"total\": \"52\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"485\", \"ways\": \"13\", \"relations\": \"0\", \"total\": \"498\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"9\", \"ways\": \"11\", \"relations\": \"0\", \"total\": \"20\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"9\", \"ways\": \"16\", \"relations\": \"0\", \"total\": \"25\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:58:35.463225"
+  },
+  "Cuenca": {
+    "query_name": "Cuenca",
+    "lat": 40.0661031,
+    "lon": -2.1313528,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"24\", \"ways\": \"5\", \"relations\": \"0\", \"total\": \"29\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"70\", \"ways\": \"5\", \"relations\": \"0\", \"total\": \"75\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"12\", \"ways\": \"4\", \"relations\": \"0\", \"total\": \"16\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"7\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"10\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:59:04.030131"
+  },
+  "Girona": {
+    "query_name": "Girona",
+    "lat": 41.9793006,
+    "lon": 2.8199439,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"30\", \"ways\": \"7\", \"relations\": \"0\", \"total\": \"37\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"310\", \"ways\": \"19\", \"relations\": \"0\", \"total\": \"329\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"6\", \"ways\": \"2\", \"relations\": \"0\", \"total\": \"8\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"8\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"11\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:59:06.458457"
+  },
+  "Granada": {
+    "query_name": "Granada",
+    "lat": 37.1734995,
+    "lon": -3.5995337,
+    "radio_metros": 8000,
+    "mirror_usado": "https://z.overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"105\", \"ways\": \"30\", \"relations\": \"0\", \"total\": \"135\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"558\", \"ways\": \"16\", \"relations\": \"0\", \"total\": \"574\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"16\", \"ways\": \"41\", \"relations\": \"0\", \"total\": \"57\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"21\", \"ways\": \"6\", \"relations\": \"0\", \"total\": \"27\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:59:19.803886"
+  },
+  "Guadalajara": {
+    "query_name": "Guadalajara",
+    "lat": 40.7399963,
+    "lon": -2.50593,
+    "radio_metros": 8000,
+    "mirror_usado": "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"1\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"1\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:59:31.866827"
+  },
+  "Donostia/San Sebastián": {
+    "query_name": "Donostia/San Sebastián",
+    "lat": 43.3224219,
+    "lon": -1.9838889,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"64\", \"ways\": \"36\", \"relations\": \"0\", \"total\": \"100\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"399\", \"ways\": \"60\", \"relations\": \"0\", \"total\": \"459\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"5\", \"ways\": \"4\", \"relations\": \"0\", \"total\": \"9\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"12\", \"ways\": \"4\", \"relations\": \"0\", \"total\": \"16\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:59:55.660978"
+  },
+  "Huelva": {
+    "query_name": "Huelva",
+    "lat": 37.2575874,
+    "lon": -6.9484945,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"5\", \"ways\": \"4\", \"relations\": \"0\", \"total\": \"9\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"73\", \"ways\": \"12\", \"relations\": \"0\", \"total\": \"85\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"9\", \"ways\": \"6\", \"relations\": \"0\", \"total\": \"15\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"3\", \"ways\": \"2\", \"relations\": \"0\", \"total\": \"5\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T21:59:58.545141"
+  },
+  "Huesca": {
+    "query_name": "Huesca",
+    "lat": 42.1360615,
+    "lon": -0.0298027,
+    "radio_metros": 8000,
+    "mirror_usado": "https://z.overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"5\", \"ways\": \"2\", \"relations\": \"0\", \"total\": \"7\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"9\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"12\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"1\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"1\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"1\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"1\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:00:08.367059"
+  },
+  "Jaén": {
+    "query_name": "Jaén",
+    "lat": 37.7728858,
+    "lon": -3.7883289,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"2\", \"ways\": \"4\", \"relations\": \"0\", \"total\": \"6\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"133\", \"ways\": \"19\", \"relations\": \"0\", \"total\": \"152\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"2\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"2\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"3\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"6\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:00:42.450973"
+  },
+  "León": {
+    "query_name": "León",
+    "lat": 42.6341451,
+    "lon": -5.9714151,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"3\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"3\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:01:19.605116"
+  },
+  "Lleida": {
+    "query_name": "Lleida",
+    "lat": 41.6147605,
+    "lon": 0.6267842,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"6\", \"ways\": \"9\", \"relations\": \"0\", \"total\": \"15\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"180\", \"ways\": \"14\", \"relations\": \"0\", \"total\": \"194\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"3\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"3\", \"ways\": \"6\", \"relations\": \"0\", \"total\": \"9\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:01:22.094078"
+  },
+  "Logroño": {
+    "query_name": "Logroño",
+    "lat": 42.4661196,
+    "lon": -2.4396676,
+    "radio_metros": 8000,
+    "mirror_usado": "https://z.overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"19\", \"ways\": \"7\", \"relations\": \"0\", \"total\": \"26\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"96\", \"ways\": \"14\", \"relations\": \"0\", \"total\": \"110\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"10\", \"ways\": \"6\", \"relations\": \"0\", \"total\": \"16\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"5\", \"relations\": \"0\", \"total\": \"5\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:01:24.416651"
+  },
+  "Lugo": {
+    "query_name": "Lugo",
+    "lat": 43.0395266,
+    "lon": -7.4567985,
+    "radio_metros": 8000,
+    "mirror_usado": "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"1\", \"relations\": \"0\", \"total\": \"1\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"8\", \"ways\": \"2\", \"relations\": \"0\", \"total\": \"10\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"3\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"3\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:01:36.831736"
+  },
+  "Madrid": {
+    "query_name": "Madrid",
+    "lat": 40.416782,
+    "lon": -3.703507,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"213\", \"ways\": \"152\", \"relations\": \"0\", \"total\": \"365\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"4351\", \"ways\": \"78\", \"relations\": \"0\", \"total\": \"4429\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"79\", \"ways\": \"51\", \"relations\": \"0\", \"total\": \"130\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"49\", \"ways\": \"29\", \"relations\": \"0\", \"total\": \"78\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:02:01.397356"
+  },
+  "Málaga": {
+    "query_name": "Málaga",
+    "lat": 36.7647913,
+    "lon": -4.4422005,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"57\", \"ways\": \"37\", \"relations\": \"0\", \"total\": \"94\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"508\", \"ways\": \"35\", \"relations\": \"0\", \"total\": \"543\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"1\", \"ways\": \"38\", \"relations\": \"0\", \"total\": \"39\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"19\", \"ways\": \"18\", \"relations\": \"0\", \"total\": \"37\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:02:04.315498"
+  },
+  "Murcia": {
+    "query_name": "Murcia",
+    "lat": 37.9347521,
+    "lon": -1.1131029,
+    "radio_metros": 8000,
+    "mirror_usado": "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"13\", \"ways\": \"8\", \"relations\": \"0\", \"total\": \"21\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"160\", \"ways\": \"22\", \"relations\": \"0\", \"total\": \"182\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"8\", \"ways\": \"8\", \"relations\": \"0\", \"total\": \"16\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"10\", \"ways\": \"7\", \"relations\": \"0\", \"total\": \"17\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:02:31.038816"
+  },
+  "Pamplona/Iruña": {
+    "query_name": "Pamplona/Iruña",
+    "lat": 42.815686,
+    "lon": -1.6522353,
+    "radio_metros": 8000,
+    "mirror_usado": "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"29\", \"ways\": \"18\", \"relations\": \"0\", \"total\": \"47\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"257\", \"ways\": \"15\", \"relations\": \"0\", \"total\": \"272\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"5\", \"ways\": \"12\", \"relations\": \"0\", \"total\": \"17\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"4\", \"ways\": \"6\", \"relations\": \"0\", \"total\": \"10\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:02:39.725339"
+  },
+  "Ourense": {
+    "query_name": "Ourense",
+    "lat": 42.1939629,
+    "lon": -7.537124,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"2\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"2\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"1\", \"relations\": \"0\", \"total\": \"1\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:03:02.967752"
+  },
+  "Oviedo": {
+    "query_name": "Oviedo",
+    "lat": 43.3533452,
+    "lon": -5.8795096,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"33\", \"ways\": \"18\", \"relations\": \"0\", \"total\": \"51\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"366\", \"ways\": \"25\", \"relations\": \"0\", \"total\": \"391\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"7\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"10\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"5\", \"ways\": \"5\", \"relations\": \"0\", \"total\": \"10\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:03:05.409648"
+  },
+  "Palencia": {
+    "query_name": "Palencia",
+    "lat": 42.4096322,
+    "lon": -4.6161004,
+    "radio_metros": 8000,
+    "mirror_usado": "https://z.overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"1\", \"ways\": \"1\", \"relations\": \"0\", \"total\": \"2\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"4\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"4\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"2\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"2\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"1\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"1\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:03:08.753883"
+  },
+  "Las Palmas de Gran Canaria": {
+    "query_name": "Las Palmas de Gran Canaria",
+    "lat": 28.1288694,
+    "lon": -15.4349015,
+    "radio_metros": 8000,
+    "mirror_usado": "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"58\", \"ways\": \"14\", \"relations\": \"0\", \"total\": \"72\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"469\", \"ways\": \"9\", \"relations\": \"0\", \"total\": \"478\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"6\", \"ways\": \"20\", \"relations\": \"0\", \"total\": \"26\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"4\", \"ways\": \"4\", \"relations\": \"0\", \"total\": \"8\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:03:19.454008"
+  },
+  "Pontevedra": {
+    "query_name": "Pontevedra",
+    "lat": 42.428065,
+    "lon": -8.6041447,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"14\", \"ways\": \"8\", \"relations\": \"0\", \"total\": \"22\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"98\", \"ways\": \"11\", \"relations\": \"0\", \"total\": \"109\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"6\", \"ways\": \"5\", \"relations\": \"0\", \"total\": \"11\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"3\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"6\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:03:53.604390"
+  },
+  "Salamanca": {
+    "query_name": "Salamanca",
+    "lat": 40.9651572,
+    "lon": -5.6640182,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"19\", \"ways\": \"27\", \"relations\": \"0\", \"total\": \"46\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"235\", \"ways\": \"13\", \"relations\": \"0\", \"total\": \"248\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"10\", \"ways\": \"16\", \"relations\": \"0\", \"total\": \"26\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"6\", \"ways\": \"9\", \"relations\": \"0\", \"total\": \"15\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:03:56.257788"
+  },
+  "Santa Cruz de Tenerife": {
+    "query_name": "Santa Cruz de Tenerife",
+    "lat": 28.467178,
+    "lon": -16.2507843,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"21\", \"ways\": \"5\", \"relations\": \"0\", \"total\": \"26\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"321\", \"ways\": \"6\", \"relations\": \"0\", \"total\": \"327\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"3\", \"ways\": \"5\", \"relations\": \"0\", \"total\": \"8\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"9\", \"ways\": \"5\", \"relations\": \"0\", \"total\": \"14\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:05:01.153263"
+  },
+  "Santander": {
+    "query_name": "Santander",
+    "lat": 43.4618932,
+    "lon": -3.8100255,
+    "radio_metros": 8000,
+    "mirror_usado": "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"33\", \"ways\": \"36\", \"relations\": \"0\", \"total\": \"69\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"281\", \"ways\": \"42\", \"relations\": \"0\", \"total\": \"323\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"9\", \"ways\": \"4\", \"relations\": \"0\", \"total\": \"13\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"10\", \"ways\": \"15\", \"relations\": \"0\", \"total\": \"25\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:05:11.304379"
+  },
+  "Segovia": {
+    "query_name": "Segovia",
+    "lat": 40.9481192,
+    "lon": -4.1172101,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"22\", \"ways\": \"31\", \"relations\": \"0\", \"total\": \"53\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"81\", \"ways\": \"15\", \"relations\": \"0\", \"total\": \"96\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"47\", \"ways\": \"68\", \"relations\": \"0\", \"total\": \"115\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"13\", \"ways\": \"2\", \"relations\": \"0\", \"total\": \"15\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:05:36.512451"
+  },
+  "Sevilla": {
+    "query_name": "Sevilla",
+    "lat": 37.3886303,
+    "lon": -5.9953403,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"131\", \"ways\": \"73\", \"relations\": \"0\", \"total\": \"204\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"941\", \"ways\": \"36\", \"relations\": \"0\", \"total\": \"977\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"38\", \"ways\": \"26\", \"relations\": \"0\", \"total\": \"64\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"19\", \"ways\": \"20\", \"relations\": \"0\", \"total\": \"39\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:05:39.225642"
+  },
+  "Soria": {
+    "query_name": "Soria",
+    "lat": 41.6012505,
+    "lon": -2.721938,
+    "radio_metros": 8000,
+    "mirror_usado": "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"1\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"1\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:05:58.676225"
+  },
+  "Tarragona": {
+    "query_name": "Tarragona",
+    "lat": 41.1172364,
+    "lon": 1.2546057,
+    "radio_metros": 8000,
+    "mirror_usado": "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"13\", \"ways\": \"11\", \"relations\": \"0\", \"total\": \"24\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"200\", \"ways\": \"8\", \"relations\": \"0\", \"total\": \"208\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"10\", \"ways\": \"7\", \"relations\": \"0\", \"total\": \"17\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"4\", \"ways\": \"11\", \"relations\": \"0\", \"total\": \"15\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:06:11.004965"
+  },
+  "Teruel": {
+    "query_name": "Teruel",
+    "lat": 40.6005259,
+    "lon": -0.9229282,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"2\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"2\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"2\", \"ways\": \"2\", \"relations\": \"0\", \"total\": \"4\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"3\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"2\", \"relations\": \"0\", \"total\": \"2\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:06:34.374472"
+  },
+  "Toledo": {
+    "query_name": "Toledo",
+    "lat": 39.8558913,
+    "lon": -4.024265,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"26\", \"ways\": \"19\", \"relations\": \"0\", \"total\": \"45\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"177\", \"ways\": \"12\", \"relations\": \"0\", \"total\": \"189\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"13\", \"ways\": \"8\", \"relations\": \"0\", \"total\": \"21\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"11\", \"ways\": \"6\", \"relations\": \"0\", \"total\": \"17\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:06:36.425111"
+  },
+  "València": {
+    "query_name": "València",
+    "lat": 39.4697065,
+    "lon": -0.3763353,
+    "radio_metros": 8000,
+    "mirror_usado": "https://z.overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"81\", \"ways\": \"45\", \"relations\": \"0\", \"total\": \"126\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"1404\", \"ways\": \"77\", \"relations\": \"0\", \"total\": \"1481\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"16\", \"ways\": \"18\", \"relations\": \"0\", \"total\": \"34\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"30\", \"ways\": \"14\", \"relations\": \"0\", \"total\": \"44\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:06:40.925208"
+  },
+  "Valladolid": {
+    "query_name": "Valladolid",
+    "lat": 41.6200024,
+    "lon": -4.7259906,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"22\", \"ways\": \"17\", \"relations\": \"0\", \"total\": \"39\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"383\", \"ways\": \"15\", \"relations\": \"0\", \"total\": \"398\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"7\", \"ways\": \"29\", \"relations\": \"0\", \"total\": \"36\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"10\", \"ways\": \"5\", \"relations\": \"0\", \"total\": \"15\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:07:29.699019"
+  },
+  "Bilbao": {
+    "query_name": "Bilbao",
+    "lat": 43.2630018,
+    "lon": -2.9350039,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"47\", \"ways\": \"34\", \"relations\": \"0\", \"total\": \"81\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"628\", \"ways\": \"43\", \"relations\": \"0\", \"total\": \"671\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"12\", \"ways\": \"10\", \"relations\": \"0\", \"total\": \"22\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"10\", \"ways\": \"13\", \"relations\": \"0\", \"total\": \"23\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:07:53.347771"
+  },
+  "Zamora": {
+    "query_name": "Zamora",
+    "lat": 41.6857693,
+    "lon": -5.942315,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"0\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"0\", \"ways\": \"1\", \"relations\": \"0\", \"total\": \"1\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:07:55.504515"
+  },
+  "Zaragoza": {
+    "query_name": "Zaragoza",
+    "lat": 41.6915847,
+    "lon": -0.9101268,
+    "radio_metros": 8000,
+    "mirror_usado": "https://z.overpass-api.de/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"46\", \"ways\": \"14\", \"relations\": \"0\", \"total\": \"60\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"810\", \"ways\": \"23\", \"relations\": \"0\", \"total\": \"833\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"7\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"10\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"39\", \"ways\": \"13\", \"relations\": \"0\", \"total\": \"52\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:08:04.686481"
+  },
+  "Ceuta": {
+    "query_name": "Ceuta",
+    "lat": 35.894422,
+    "lon": -5.3558174,
+    "radio_metros": 8000,
+    "mirror_usado": "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"7\", \"ways\": \"1\", \"relations\": \"0\", \"total\": \"8\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"40\", \"ways\": \"3\", \"relations\": \"0\", \"total\": \"43\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"3\", \"ways\": \"0\", \"relations\": \"0\", \"total\": \"3\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"3\", \"ways\": \"2\", \"relations\": \"0\", \"total\": \"5\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:08:20.078705"
+  },
+  "Melilla": {
+    "query_name": "Melilla",
+    "lat": 35.2918698,
+    "lon": -2.9409026,
+    "radio_metros": 8000,
+    "mirror_usado": "https://overpass.openstreetmap.fr/api/interpreter",
+    "elements_raw_json": "[{\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"2\", \"ways\": \"6\", \"relations\": \"0\", \"total\": \"8\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"24\", \"ways\": \"2\", \"relations\": \"0\", \"total\": \"26\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"3\", \"ways\": \"14\", \"relations\": \"0\", \"total\": \"17\"}}, {\"type\": \"count\", \"id\": 0, \"tags\": {\"nodes\": \"7\", \"ways\": \"4\", \"relations\": \"0\", \"total\": \"11\"}}]",
+    "_meta.fecha_extraccion": "2026-09-06T22:08:56.659339"
+  }
+}

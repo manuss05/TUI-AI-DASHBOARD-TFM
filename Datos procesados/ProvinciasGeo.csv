@@ -1,53 +1,51 @@
-COD_PROV;PROVINCIA;COD_CA;COMUNIDAD_AUTONOMA;CAPITAL
-1;Araba/Álava;16;País Vasco/Euskadi;Vitoria-Gasteiz
-2;Albacete;8;Castilla-La Mancha;Albacete
-3;Alacant/Alicante;10;Comunitat Valenciana;Alacant/Alicante
-4;Almería;1;Andalucía;Almería
-5;Ávila;7;Castilla y León;Ávila
-6;Badajoz;11;Extremadura;Badajoz
-7;Illes Balears;4;Illes Balears;Palma
-8;Barcelona;9;Cataluña/Catalunya;Barcelona
-9;Burgos;7;Castilla y León;Burgos
-10;Cáceres;11;Extremadura;Cáceres
-11;Cádiz;1;Andalucía;Cádiz
-12;Castelló/Castellón;10;Comunitat Valenciana;Castelló de la Plana/Castellón de la Plana
-13;Ciudad Real;8;Castilla-La Mancha;Ciudad Real
-14;Córdoba;1;Andalucía;Córdoba
-15;A Coruña;12;Galicia;A Coruña
-16;Cuenca;8;Castilla-La Mancha;Cuenca
-17;Girona;9;Cataluña/Catalunya;Girona
-18;Granada;1;Andalucía;Granada
-19;Guadalajara;8;Castilla-La Mancha;Guadalajara
-20;Gipuzkoa;16;País Vasco/Euskadi;Donostia/San Sebastián
-21;Huelva;1;Andalucía;Huelva
-22;Huesca;2;Aragón;Huesca
-23;Jaén;1;Andalucía;Jaén
-24;León;7;Castilla y León;León
-25;Lleida;9;Cataluña/Catalunya;Lleida
-26;La Rioja;17;La Rioja;Logroño
-27;Lugo;12;Galicia;Lugo
-28;Madrid;13;Comunidad de Madrid;Madrid
-29;Málaga;1;Andalucía;Málaga
-30;Murcia;14;Región de Murcia;Murcia
-31;Navarra;15;Comunidad Foral de Navarra;Pamplona/Iruña
-32;Ourense;12;Galicia;Ourense
-33;Asturias;3;Principado de Asturias;Oviedo
-34;Palencia;7;Castilla y León;Palencia
-35;Las Palmas;5;Canarias;Las Palmas de Gran Canaria
-36;Pontevedra;12;Galicia;Pontevedra
-37;Salamanca;7;Castilla y León;Salamanca
-38;Santa Cruz de Tenerife;5;Canarias;Santa Cruz de Tenerife
-39;Cantabria;6;Cantabria;Santander
-40;Segovia;7;Castilla y León;Segovia
-41;Sevilla;1;Andalucía;Sevilla
-42;Soria;7;Castilla y León;Soria
-43;Tarragona;9;Cataluña/Catalunya;Tarragona
-44;Teruel;2;Aragón;Teruel
-45;Toledo;8;Castilla-La Mancha;Toledo
-46;València/Valencia;10;Comunitat Valenciana;València
-47;Valladolid;7;Castilla y León;Valladolid
-48;Bizkaia;16;País Vasco/Euskadi;Bilbao
-49;Zamora;7;Castilla y León;Zamora
-50;Zaragoza;2;Aragón;Zaragoza
-51;Ceuta;18;Ciudad Autónoma de Ceuta;Ceuta
-52;Melilla;19;Ciudad Autónoma de Melilla;Melilla
+COD_PROV;PROVINCIA;COD_CA;COMUNIDAD_AUTONOMA;CAPITAL;Perc_Provincia;Perc_VALOR PERNOCTACIONES;Perc_VALOR VIAJERO;Perc_PERIODO PERNOCTACIONES;Perc_PERIODO VIAJERO;COD_INE;Ratios_Provincia;Ratios_Periodo ADR Dato;Ratios_Periodo ADR Tasa Var;Ratios_Periodo RevPar Dato;Ratios_Periodo RevPar Tasa Var;Ratios_Valor ADR Dato;Ratios_Valor ADR Tasa Var;Ratios_Valor RevPar Dato;Ratios_Valor RevPar Tasa Var;Ratios_ADR Anual Medio
+1;Araba/Álava;16;País Vasco/Euskadi;Vitoria-Gasteiz;Alava;982555.0;456280.0;M08;M08;1;ArabaÁlava;M07;M06;M07;M10;117.12;13.91;89.31;27.88;92.07083333333333
+2;Albacete;8;Castilla-La Mancha;Albacete;Albacete;802323.0;373917.0;M09;M09;2;Albacete;M09;M11;M09;M09;75.62;20.13;50.1;54.79;66.4875
+3;Alacant/Alicante;10;Comunitat Valenciana;Alacant/Alicante;Alicante;16590966.0;4345693.0;M08;M08;3;AlicanteAlacant;M08;M11;M08;M11;159.22;8.13;136.07;11.54;106.2075
+4;Almería;1;Andalucía;Almería;Almería;4567704.0;1372225.0;M08;M08;4;Almería;M08;M09;M08;M09;163.14;16.26;137.15;19.8;89.28750000000001
+5;Ávila;7;Castilla y León;Ávila;Avila;563816.0;355110.0;M08;M08;5;Ávila;M04;M06;M08;M03;75.19;6.75;36.13;30.83;69.87416666666667
+6;Badajoz;11;Extremadura;Badajoz;Badajoz;1124676.0;665207.0;M08;M08;6;Badajoz;M08;M02;M04;M02;69.04;14.81;37.18;18.6;65.20333333333333
+7;Illes Balears;4;Illes Balears;Palma;Balears, Illes;57461010.0;10865198.0;M08;M08;7;Balears Illes;M07;M08;M08;M05;213.68;9.51;194.11;12.29;136.43583333333333
+8;Barcelona;9;Cataluña/Catalunya;Barcelona;Barcelona;29851037.0;11914458.0;M08;M08;8;Barcelona;M05;M04;M05;M04;174.11;9.29;140.75;13.8;150.62666666666667
+9;Burgos;7;Castilla y León;Burgos;Burgos;1352146.0;914336.0;M08;M08;9;Burgos;M08;M10;M08;M10;82.72;13.3;60.4;18.01;73.12833333333334
+10;Cáceres;11;Extremadura;Cáceres;Cáceres;1053828.0;575695.0;M08;M08;10;Cáceres;M04;M07;M04;M04;85.09;15.44;48.71;20.14;76.46666666666667
+11;Cádiz;1;Andalucía;Cádiz;Cádiz;7851051.0;2527031.0;M08;M08;11;Cádiz;M08;M10;M08;M12;187.34;6.81;160.02;16.33;108.45583333333333
+12;Castelló/Castellón;10;Comunitat Valenciana;Castelló de la Plana/Castellón de la Plana;Castellón;3461912.0;1155216.0;M08;M08;12;CastellónCastelló;M07;M03;M08;M11;158.37;25.92;118.75;28.75;88.20583333333333
+13;Ciudad Real;8;Castilla-La Mancha;Ciudad Real;Ciudad Real;681416.0;392530.0;M08;M08;13;Ciudad Real;M07;M03;M04;M10;66.15;10.87;29.71;21.51;60.67916666666667
+14;Córdoba;1;Andalucía;Córdoba;Córdoba;1666547.0;977406.0;M10;M10;14;Córdoba;M05;M01;M05;M12;120.55;10.25;79.52;18.07;84.03333333333333
+15;A Coruña;12;Galicia;A Coruña;A Coruña;3811149.0;2142876.0;M08;M08;15;Coruña A;M08;M02;M08;M12;94.71;10.12;68.24;26.03;76.73083333333334
+16;Cuenca;8;Castilla-La Mancha;Cuenca;Cuenca;491531.0;280234.0;M08;M08;16;Cuenca;M04;M07;M04;M07;79.3;11.25;32.51;17.41;71.99249999999999
+17;Girona;9;Cataluña/Catalunya;Girona;Girona;11501004.0;3799376.0;M08;M08;17;Girona;M08;M07;M08;M07;149.58;13.66;126.87;14.44;98.1075
+18;Granada;1;Andalucía;Granada;Granada;5251610.0;2443931.0;M08;M10;18;Granada;M01;M01;M10;M01;110.9;18.58;69.88;19.93;97.83666666666666
+19;Guadalajara;8;Castilla-La Mancha;Guadalajara;Guadalajara;485248.0;268283.0;M10;M10;19;Guadalajara;M09;M08;M09;M03;87.6;25.99;38.75;43.8;80.31916666666667
+20;Gipuzkoa;16;País Vasco/Euskadi;Donostia/San Sebastián;Guipúzcoa;2870201.0;1394417.0;M08;M08;20;Gipuzkoa;M07;M07;M07;M07;230.82;19.05;193.68;20.76;140.51166666666666
+21;Huelva;1;Andalucía;Huelva;Huelva;3334969.0;944213.0;M08;M08;21;Huelva;M07;M07;M07;M10;179.46;21.9;132.45;22.17;101.1875
+22;Huesca;2;Aragón;Huesca;Huesca;1857200.0;841428.0;M08;M08;22;Huesca;M12;M12;M08;M12;111.0;24.09;65.66;37.21;89.35416666666667
+23;Jaén;1;Andalucía;Jaén;Jaén;940011.0;522649.0;M08;M10;23;Jaén;M05;M09;M05;M08;75.98;11.23;34.09;13.89;70.08166666666666
+24;León;7;Castilla y León;León;León;1327610.0;793827.0;M08;M08;24;León;M08;M10;M08;M10;71.79;5.91;47.12;20.82;64.29333333333334
+25;Lleida;9;Cataluña/Catalunya;Lleida;Lleida;1741792.0;806622.0;M08;M08;25;Lleida;M02;M02;M02;M10;131.73;6.01;72.0;18.59;90.02083333333333
+26;La Rioja;17;La Rioja;Logroño;Rioja, La;1106339.0;646684.0;M08;M08;26;Rioja La;M10;M12;M09;M12;89.72;8.44;61.25;26.28;83.22666666666667
+27;Lugo;12;Galicia;Lugo;Lugo;1284963.0;783758.0;M08;M08;27;Lugo;M08;M07;M08;M03;79.91;15.84;55.05;26.48;62.879999999999995
+28;Madrid;13;Comunidad de Madrid;Madrid;Madrid;23527348.0;11411729.0;M10;M10;28;Madrid;M10;M08;M10;M08;173.05;12.58;144.16;17.26;148.82916666666668
+29;Málaga;1;Andalucía;Málaga;Málaga;19346675.0;5413153.0;M08;M08;29;Málaga;M08;M05;M08;M05;207.8;13.18;181.09;14.11;139.35
+30;Murcia;14;Región de Murcia;Murcia;Murcia;3023967.0;1323116.0;M08;M08;30;Murcia;M08;M01;M08;M10;98.83;8.41;71.24;8.31;76.59333333333333
+31;Navarra;15;Comunidad Foral de Navarra;Pamplona/Iruña;Navarra;1974811.0;1007302.0;M08;M08;31;Navarra;M07;M05;M07;M10;107.69;9.35;72.13;10.62;78.355
+32;Ourense;12;Galicia;Ourense;Ourense;614169.0;307536.0;M08;M08;32;Ourense;M07;M02;M08;M01;73.72;14.1;33.93;33.3;65.8325
+33;Asturias;3;Principado de Asturias;Oviedo;Asturias;3617017.0;1787079.0;M08;M08;33;Asturias;M08;M09;M08;M12;120.92;9.98;95.97;18.42;78.52749999999999
+34;Palencia;7;Castilla y León;Palencia;Palencia;377377.0;188635.0;M08;M08;34;Palencia;M07;M12;M08;M03;67.89;15.03;44.24;22.08;62.88583333333333
+35;Las Palmas;5;Canarias;Las Palmas de Gran Canaria;Las Palmas;38806848.0;5616825.0;M08;M08;35;Palmas Las;M12;M08;M02;M08;159.57;8.64;133.82;11.89;142.72
+36;Pontevedra;12;Galicia;Pontevedra;Pontevedra;3638967.0;1710105.0;M08;M08;36;Pontevedra;M08;M02;M08;M10;108.07;12.08;78.51;23.44;78.84083333333334
+37;Salamanca;7;Castilla y León;Salamanca;Salamanca;1644347.0;984385.0;M08;M08;37;Salamanca;M05;M10;M08;M10;77.47;11.86;45.04;11.01;70.89666666666666
+38;Santa Cruz de Tenerife;5;Canarias;Santa Cruz de Tenerife;Santa Cruz Tenerife;23497726.0;3909971.0;M08;M08;38;Santa Cruz de Tenerife;M03;M03;M02;M03;169.4;10.97;146.16;11.31;150.29083333333332
+39;Cantabria;6;Cantabria;Santander;Cantabria;2705531.0;1211556.0;M08;M08;39;Cantabria;M08;M06;M08;M12;137.54;11.39;109.29;14.75;88.915
+40;Segovia;7;Castilla y León;Segovia;Segovia;935748.0;522987.0;M08;M08;40;Segovia;M08;M04;M08;M10;89.17;9.65;52.59;10.81;79.42333333333333
+41;Sevilla;1;Andalucía;Sevilla;Sevilla;6745638.0;3298461.0;M10;M10;41;Sevilla;M04;M03;M04;M03;177.98;12.6;142.67;23.54;121.87333333333333
+42;Soria;7;Castilla y León;Soria;Soria;436566.0;236196.0;M08;M08;42;Soria;M08;M12;M08;M12;80.18;25.47;40.4;34.57;74.205
+43;Tarragona;9;Cataluña/Catalunya;Tarragona;Tarragona;9543477.0;2748303.0;M08;M08;43;Tarragona;M08;M03;M08;M02;151.75;12.39;135.27;31.38;94.52833333333332
+44;Teruel;2;Aragón;Teruel;Teruel;861358.0;432082.0;M08;M08;44;Teruel;M07;M07;M08;M03;88.41;14.49;46.2;19.91;75.55666666666666
+45;Toledo;8;Castilla-La Mancha;Toledo;Toledo;1423093.0;843151.0;M10;M10;45;Toledo;M05;M12;M05;M03;101.4;13.79;60.95;29.14;83.94
+46;València/Valencia;10;Comunitat Valenciana;València;Valencia;7522289.0;3098708.0;M08;M08;46;ValenciaValència;M07;M12;M07;M12;124.54;15.59;101.31;25.64;102.94083333333333
+47;Valladolid;7;Castilla y León;Valladolid;Valladolid;1087724.0;621335.0;M08;M08;47;Valladolid;M09;M10;M09;M10;90.76;15.5;60.62;28.28;82.40583333333333
+48;Bizkaia;16;País Vasco/Euskadi;Bilbao;Vizcaya;3072731.0;1571395.0;M08;M08;48;Bizkaia;M05;M09;M08;M04;140.75;8.22;116.54;12.09;108.83749999999999
+49;Zamora;7;Castilla y León;Zamora;Zamora;324877.0;197984.0;M08;M08;49;Zamora;M07;M03;M08;M03;78.7;12.19;41.71;46.64;71.42
+50;Zaragoza;2;Aragón;Zaragoza;Zaragoza;2467114.0;1418404.0;M08;M08;50;Zaragoza;M04;M09;M10;M09;86.0;15.56;60.11;27.03;77.81166666666667

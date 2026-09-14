@@ -15,6 +15,12 @@ DATA_RAW_DIR.mkdir(parents=True, exist_ok=True)
 DATA_PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
 DATA_LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
+# Rutas globales y cartografías
+CARTOGRAFIA_SHP = BASE_DIR.parent / "cartografias" / "Munic04_ESP.shp"
+ROOT_PROCESSED_DIR = BASE_DIR.parent / "Datos procesados"
+OSM_POLYGONS_CACHE_DIR = DATA_RAW_DIR / "osm_provincias_cache"
+OSM_POLYGONS_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+
 # Claves API
 AEMET_API_KEY = os.getenv("AEMET_API_KEY", "")
 

@@ -30,3 +30,18 @@ def save_table(df: pd.DataFrame, table_name: str, output_dir: Path, mode: str = 
         filepath = fallback_path
     logger.info("%d filas -> %s", len(df), filepath.name)
     return filepath
+
+
+def save_parquet(df: pd.DataFrame, table_name: str, output_dir: Path) -> Path:
+    """Guarda un DataFrame en formato Parquet comprimido con snappy/pyarrow."""
+    output_dir.mkdir(parents=True, exist_ok=True)
+    filepath = output_dir / f"{table_name}.parquet"
+    if df.empty:
+        return filepath
+    try:
+        df.to_parquet(filepath, index=False, engine="pyarrow")
+    except Exception as exc:
+        logger.error("Error al guardar parquet %s: %s", filepath.name, exc)
+        raise
+    logger.info("%d filas -> %s (Parquet)", len(df), filepath.name)
+    return filepath

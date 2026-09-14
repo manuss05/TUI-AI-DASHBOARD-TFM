@@ -39,6 +39,11 @@ TABLE_SCHEMAS = {
         "query_name", "lat", "lon", "radio_metros", "mirror_usado",
         "elements_raw_json", "_meta.fecha_extraccion"
     ],
+    "osm_oferta_provincias": [
+        "COD_PROV", "PROVINCIA", "CAPITAL", "COMUNIDAD_AUTONOMA",
+        "hoteles_osm", "restaurantes_osm", "atracciones_osm", "museos_osm",
+        "total_poi_osm", "lat", "lon", "radio_metros", "_meta.fecha_extraccion"
+    ],
     "clima_aemet": [
         "id_municipio", "nombre", "provincia", "elaborado", "fecha",
         "dia_raw_json", "_meta.fecha_extraccion"
@@ -46,7 +51,26 @@ TABLE_SCHEMAS = {
     "datosgob_catalogo": [
         "theme", "about", "title_raw", "description_raw",
         "publisher_raw", "distribution_raw", "keywords_raw", "modified", "_meta.fecha_extraccion"
-    ]
+    ],
+    "eoh_oferta_provincias": [
+        "COD_PROV", "PROVINCIA", "Anyo", "Periodo",
+        "establecimientos_abiertos", "plazas_estimadas",
+        "grado_ocupacion_plazas", "grado_ocupacion_habitaciones",
+        "grado_ocupacion_finsemana", "personal_empleado", "estancia_media",
+        "_meta.fecha_extraccion"
+    ],
+    "rural_oferta_provincias": [
+        "COD_PROV", "PROVINCIA", "Anyo", "Periodo",
+        "establecimientos_abiertos", "plazas_estimadas",
+        "grado_ocupacion_plazas", "grado_ocupacion_habitaciones",
+        "grado_ocupacion_finsemana", "personal_empleado",
+        "_meta.fecha_extraccion"
+    ],
+    "rural_demanda_provincias": [
+        "COD_PROV", "PROVINCIA", "Anyo", "Periodo",
+        "viajeros", "pernoctaciones",
+        "_meta.fecha_extraccion"
+    ],
 }
 
 

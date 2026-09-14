@@ -17,6 +17,8 @@ from src.schema import empty_dataframe
 from src.utils.http_client import HttpClient
 from src.utils.logger import get_logger
 
+from config.settings import PROVINCIAS_ESPANA
+
 logger = get_logger(__name__)
 
 BASE_URL = "https://servicios.ine.es/wstempus/js/ES"
@@ -31,6 +33,28 @@ _TABLA_REVPAR_PROV = 2057        # Indicadores de Rentabilidad: RevPAR por CCAA 
 _TABLA_RENTABILIDAD_EOH = 2066   # Indicadores de ocupación/rentabilidad hotelera
 _TABLA_EGATUR_CCAA = 10839       # Gasto de los turistas internacionales por CCAA de destino (EGATUR)
 _TABLA_EGATUR_ACCESO = 10835     # Gasto de turistas internacionales por vía de acceso (EGATUR)
+_TABLA_EOH_OFERTA_PROV = 2066    # EOH: Establecimientos, plazas, ocupación y personal por provincias
+_TABLA_RURAL_OFERTA_PROV = 2070  # Turismo Rural: Establecimientos, plazas, ocupación por provincias
+_TABLA_RURAL_DEMANDA_PROV = 49380  # Turismo Rural: Viajeros y pernoctaciones por provincias
+
+# Mapeo de códigos de "Concepto turístico" → nombre limpio de columna
+_CONCEPTO_OFERTA_MAP: dict[str, str] = {
+    "1": "establecimientos_abiertos",
+    "2": "plazas_estimadas",
+    "3": "parcelas_estimadas",
+    "4": "grado_ocupacion_plazas",
+    "5": "grado_ocupacion_finsemana",
+    "6": "grado_ocupacion_habitaciones",
+    "7": "grado_ocupacion_parcelas",
+    "8": "personal_empleado",
+    "D": "estancia_media",
+}
+
+_CONCEPTO_DEMANDA_MAP: dict[str, str] = {
+    "A": "pernoctaciones",
+    "B": "viajeros",
+    "C": "pernoctaciones",  # En tabla 49380 (Rural) pernoctaciones es C
+}
 
 
 def _descarga_tabla(
@@ -95,6 +119,146 @@ def _extract_series_data(
     if not rows:
         return empty_dataframe(table_schema_key)
     return pd.DataFrame(rows)
+
+
+def _clean_provincial_data(
+    df_raw: pd.DataFrame,
+    concepto_map: dict[str, str],
+    schema_key: str,
+    require_total_origen: bool = False,
+) -> pd.DataFrame:
+    """
+    Transforma datos crudos Tempus3 en formato limpio pivotado por provincia.
+
+    Parsea ``MetaData_json`` para extraer ``COD_PROV`` (oficial INE, 2 dígitos) y
+    el concepto turístico, filtra solo registros provinciales (descarta CCAA y
+    Total Nacional) y pivota las métricas como columnas.
+
+    Parameters
+    ----------
+    df_raw : DataFrame crudo (salida de ``_extract_series_data``).
+    concepto_map : Diccionario ``{codigo_concepto: nombre_columna}``.
+    schema_key : Clave del esquema en ``TABLE_SCHEMAS`` (para fallback vacío).
+    require_total_origen : Si ``True``, filtra para retener únicamente la
+        categoría "Total" de residencia/origen (tablas de demanda).
+    """
+    if df_raw.empty:
+        return empty_dataframe(schema_key)
+
+    prov_names: dict[str, str] = {
+        p["cod_prov"]: p["nombre"] for p in PROVINCIAS_ESPANA
+    }
+    fecha_extraccion = datetime.now().isoformat()
+    records: list[dict] = []
+
+    for _, row in df_raw.iterrows():
+        meta_raw = row.get("MetaData_json")
+        meta: list[dict] = []
+        if isinstance(meta_raw, str) and meta_raw.strip():
+            try:
+                meta = json.loads(meta_raw)
+            except Exception:
+                continue
+        if not meta:
+            continue
+
+        cod_prov: Optional[str] = None
+        concepto_code: Optional[str] = None
+        is_dato = False
+        is_total_categoria = True
+        is_total_origen = True
+        has_categoria_var = False
+        has_origen_var = False
+
+        for m in meta:
+            v_name = m.get("T3_Variable", "")
+            c_name = m.get("Nombre", "")
+            c_code = str(m.get("Codigo", "")).strip()
+
+            if v_name == "Provincias":
+                if c_code and c_code != "00":
+                    cod_prov = c_code.zfill(2)
+            elif v_name == "Comunidades y Ciudades Autónomas":
+                _ccaa_uniprov = {
+                    "03": "33",  # Asturias
+                    "04": "07",  # Illes Balears
+                    "06": "39",  # Cantabria
+                    "13": "28",  # Madrid
+                    "14": "30",  # Murcia
+                    "15": "31",  # Navarra
+                    "17": "26",  # La Rioja
+                    "18": "51",  # Ceuta
+                    "19": "52",  # Melilla
+                }
+                if c_code in _ccaa_uniprov:
+                    cod_prov = _ccaa_uniprov[c_code]
+                elif c_name == "Ceuta":
+                    cod_prov = "51"
+                elif c_name == "Melilla":
+                    cod_prov = "52"
+                # Otras CCAA pluriprovinciales (Andalucía, etc.) -> None -> se descartan para no duplicar
+            elif "Concepto" in v_name:
+                concepto_code = c_code
+            elif "Tipo de dato" in v_name:
+                is_dato = c_code == "0" or "Dato" in c_name
+            elif "CATEGORIA" in v_name.upper():
+                has_categoria_var = True
+                is_total_categoria = "Total" in c_name or c_code in ("", "0")
+            elif "RESIDENCIA" in v_name.upper() or "ORIGEN" in v_name.upper():
+                has_origen_var = True
+                is_total_origen = c_name == "Total" or c_code in ("0", "")
+
+        # Filtros
+        if not cod_prov or not is_dato:
+            continue
+        if has_categoria_var and not is_total_categoria:
+            continue
+        if require_total_origen and has_origen_var and not is_total_origen:
+            continue
+        if concepto_code is None:
+            continue
+
+        col_name = concepto_map.get(concepto_code)
+        if col_name is None:
+            continue
+
+        val = row.get("Valor")
+        if pd.isna(val):
+            continue
+
+        records.append({
+            "COD_PROV": cod_prov,
+            "PROVINCIA": prov_names.get(cod_prov, ""),
+            "Anyo": row.get("Anyo"),
+            "Periodo": str(row.get("T3_Periodo", "")).strip(),
+            "metrica": col_name,
+            "Valor": float(val),
+        })
+
+    if not records:
+        return empty_dataframe(schema_key)
+
+    df_clean = pd.DataFrame(records)
+
+    # Pivotar: cada métrica se convierte en una columna
+    df_pivot = df_clean.pivot_table(
+        index=["COD_PROV", "PROVINCIA", "Anyo", "Periodo"],
+        columns="metrica",
+        values="Valor",
+        aggfunc="first",
+    ).reset_index()
+
+    df_pivot.columns.name = None
+    df_pivot["_meta.fecha_extraccion"] = fecha_extraccion
+    df_pivot = df_pivot.sort_values(
+        ["COD_PROV", "Anyo", "Periodo"]
+    ).reset_index(drop=True)
+
+    logger.info(
+        "[INE] [OK] Limpieza provincial (%s): %d filas, %d provincias.",
+        schema_key, len(df_pivot), df_pivot["COD_PROV"].nunique(),
+    )
+    return df_pivot
 
 
 class INEExtractor:
@@ -182,6 +346,75 @@ class INEExtractor:
             return empty_dataframe("gasto_turistico")
         return pd.concat(frames, ignore_index=True)
 
+    # ---------- Nuevos extractores de oferta y demanda provincial ----------
+
+    def get_eoh_oferta_provincias(self, n_ultimos: int = 24) -> pd.DataFrame:
+        """
+        Descarga y limpia la oferta hotelera por provincias (Tabla 2065).
+
+        CSV resultante con columnas: COD_PROV, PROVINCIA, Anyo, Periodo,
+        establecimientos_abiertos, plazas_estimadas, grado_ocupacion_plazas,
+        grado_ocupacion_habitaciones, grado_ocupacion_finsemana,
+        personal_empleado, estancia_media.
+        """
+        logger.info(
+            "[INE_EOH_OFERTA] -> Descargando Tabla %s (n_ultimos=%d)...",
+            _TABLA_EOH_OFERTA_PROV, n_ultimos,
+        )
+        series = _descarga_tabla(self.client, _TABLA_EOH_OFERTA_PROV, n_ultimos)
+        if not series:
+            return empty_dataframe("eoh_oferta_provincias")
+        df_raw = _extract_series_data(
+            series, _TABLA_EOH_OFERTA_PROV, "eoh_oferta_provincias"
+        )
+        return _clean_provincial_data(
+            df_raw, _CONCEPTO_OFERTA_MAP, "eoh_oferta_provincias"
+        )
+
+    def get_rural_oferta_provincias(self, n_ultimos: int = 24) -> pd.DataFrame:
+        """
+        Descarga y limpia la oferta de turismo rural por provincias (Tabla 2070).
+
+        CSV resultante con columnas: COD_PROV, PROVINCIA, Anyo, Periodo,
+        establecimientos_abiertos, plazas_estimadas, grado_ocupacion_plazas,
+        grado_ocupacion_habitaciones, grado_ocupacion_finsemana,
+        personal_empleado.
+        """
+        logger.info(
+            "[INE_RURAL_OFERTA] -> Descargando Tabla %s (n_ultimos=%d)...",
+            _TABLA_RURAL_OFERTA_PROV, n_ultimos,
+        )
+        series = _descarga_tabla(self.client, _TABLA_RURAL_OFERTA_PROV, n_ultimos)
+        if not series:
+            return empty_dataframe("rural_oferta_provincias")
+        df_raw = _extract_series_data(
+            series, _TABLA_RURAL_OFERTA_PROV, "rural_oferta_provincias"
+        )
+        return _clean_provincial_data(
+            df_raw, _CONCEPTO_OFERTA_MAP, "rural_oferta_provincias"
+        )
+
+    def get_rural_demanda_provincias(self, n_ultimos: int = 24) -> pd.DataFrame:
+        """
+        Descarga y limpia la demanda de turismo rural por provincias (Tabla 49380).
+
+        CSV resultante con columnas: COD_PROV, PROVINCIA, Anyo, Periodo,
+        viajeros, pernoctaciones.
+        """
+        logger.info(
+            "[INE_RURAL_DEMANDA] -> Descargando Tabla %s (n_ultimos=%d)...",
+            _TABLA_RURAL_DEMANDA_PROV, n_ultimos,
+        )
+        series = _descarga_tabla(self.client, _TABLA_RURAL_DEMANDA_PROV, n_ultimos)
+        if not series:
+            return empty_dataframe("rural_demanda_provincias")
+        df_raw = _extract_series_data(
+            series, _TABLA_RURAL_DEMANDA_PROV, "rural_demanda_provincias"
+        )
+        return _clean_provincial_data(
+            df_raw, _CONCEPTO_DEMANDA_MAP, "rural_demanda_provincias",
+            require_total_origen=True,
+        )
 
     def search_operations(self, keyword: str) -> pd.DataFrame:
         resp = self.client.get(f"{BASE_URL}/OPERACIONES_DISPONIBLES")

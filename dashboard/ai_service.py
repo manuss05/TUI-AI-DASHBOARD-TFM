@@ -30,7 +30,7 @@ class TuiTourismAI:
     def __init__(self, api_key: Optional[str] = None):
         self.api_key = api_key or os.getenv("GEMINI_API_KEY", "")
         self.client = None
-        self.model_name = "gemini-3.5-flash-lite"
+        self.model_name = "gemini-3.6-flash"
         self.active = False
 
         if GENAI_AVAILABLE and self.api_key:
@@ -89,7 +89,7 @@ Genera un dictamen ejecutivo en formato Markdown profesional con estas 4 seccion
 
 Sé riguroso, cuantitativo y con mentalidad de negocio turístico responsable.
 """
-            for m_candidate in ["gemini-3.5-flash-lite", "gemini-3.7-flash", "gemini-flash-latest"]:
+            for m_candidate in ["gemini-3.6-flash", "gemini-3.7-flash", "gemini-flash-latest"]:
                 try:
                     resp = self.client.models.generate_content(
                         model=m_candidate,
@@ -172,7 +172,7 @@ Instrucciones:
 - Cita siempre datos numéricos exactos de las provincias relevantes (plazas, ocupación, POIs).
 - Si te piden comparaciones o rankings, lista las provincias en viñetas ordenadas.
 """
-            for m_candidate in ["gemini-3.5-flash-lite", "gemini-3.7-flash", "gemini-flash-latest"]:
+            for m_candidate in ["gemini-3.6-flash", "gemini-3.7-flash", "gemini-flash-latest"]:
                 try:
                     resp = self.client.models.generate_content(
                         model=m_candidate,
@@ -188,12 +188,12 @@ Instrucciones:
         if "valle" in q_lower or "plazas" in q_lower or "capacidad" in q_lower:
             top_valle = df_contexto.sort_values(by="margen_hotel_valle", ascending=False).head(5) if "margen_hotel_valle" in df_contexto.columns else df_contexto.head(5)
             lineas = [f"- **{row.get('provincia')}**: {row.get('margen_hotel_valle', 0):,.0f} plazas libres en temporada baja." for _, row in top_valle.iterrows()]
-            return "### 📊 Provincias con mayor margen de plazas hoteleras en temporada valle:\n" + "\n".join(lineas)
+            return "###  Provincias con mayor margen de plazas hoteleras en temporada valle:\n" + "\n".join(lineas)
 
         elif "poi" in q_lower or "cultural" in q_lower or "oferta" in q_lower:
             top_osm = df_contexto.sort_values(by="total_poi_osm", ascending=False).head(5) if "total_poi_osm" in df_contexto.columns else df_contexto.head(5)
             lineas = [f"- **{row.get('provincia')}**: {row.get('total_poi_osm', 0):,d} POIs totales mapeados en OpenStreetMap." for _, row in top_osm.iterrows()]
-            return "### 🗺️ Provincias con mayor volumen de oferta territorial (OSM):\n" + "\n".join(lineas)
+            return "###  Provincias con mayor volumen de oferta territorial (OSM):\n" + "\n".join(lineas)
 
         return f"He analizado tu consulta sobre *'{pregunta}'*. Revisa la matriz estratégica del dashboard donde se correlaciona la saturación estival con el potencial territorial de los 170.939 POIs georreferenciados."
 
@@ -209,10 +209,10 @@ Instrucciones:
         capacidad_absorcion_pct = (turistas_a_desviar / max(plazas_valle_dest, 1)) * 100.0
 
         viable = capacidad_absorcion_pct <= 100.0
-        estado = "✅ Viable y sostenible" if viable else "⚠️ Requiere escalonamiento temporal"
+        estado = " Viable y sostenible" if viable else " Requiere escalonamiento temporal"
 
         return f"""
-### 🔄 Simulación de Redistribución de Flujos Turísticos (TUI What-If Engine)
+###  Simulación de Redistribución de Flujos Turísticos (TUI What-If Engine)
 
 - **Ruta de Desvío:** De **{prov_origen.get('provincia', 'Origen')}** (Destino Saturado) $\\longrightarrow$ **{prov_destino.get('provincia', 'Destino')}** (Destino con Capacidad Ociosa).
 - **Porcentaje de desvío simulado:** **{pct_desvio:.1f}%** de los flujos.

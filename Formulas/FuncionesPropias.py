@@ -1,9 +1,106 @@
 import pandas as pd
+import json
 
+def añadir_prefijo_col(df, 
+                       id, 
+                       prefijo):
+    
+    """Fórmula para incluir prefijos en los df antes de realizar el merge()
+    df = dataframe
+    id= columna de identificador (COD_INE O COD_PROV)
+    prefijo: prefijo a incluir"""
+    
+    df[id] = df[id].astype('Int64')
+    return df.set_index(id).add_prefix(prefijo).reset_index()
+
+
+
+def estacionador(df, 
+                 *columnas):
+    
+    """Para transformar en las columnas seleccionadas el mes formato M01 a su estacion"""
+    #Definimos valores de estaciones
+    orden_estaciones = ['Invierno', 'Primavera', 'Verano', 'Otoño']
+    mapa_estaciones = {
+        'M01': 'Invierno', 'M02': 'Invierno', 'M03': 'Invierno', 
+        
+        'M04': 'Primavera', 'M05': 'Primavera', 'M06': 'Primavera',
+        
+        'M07': 'Verano', 'M08': 'Verano', 'M09': 'Verano',
+        
+        'M10': 'Otoño', 'M11': 'Otoño', 'M12': 'Otoño',} #Dict para transformar variables en estaciones y agrupar
+    
+    #listamos columnas
+    if not columnas:
+        cols_a_transformar = [col for col in df.columns if 'periodo' in col.lower()]
+    else:
+        cols_a_transformar = list(columnas)
+        
+    for col in cols_a_transformar:
+        if col in df.columns:
+            # Limpiar espacios y pasar a mayúsculas por seguridad
+            df[col] = df[col].astype(str).str.strip().str.upper()
+            df[col] = df[col].map(mapa_estaciones).fillna(df[col])
+            # Convertir a categórico ordenado
+            df[col] = pd.Categorical(df[col], categories=orden_estaciones, ordered=True)
+    return df
+
+
+
+def cambiar_tipodato(df, 
+                     colnumeric,
+                     colfloat,
+                     colcat):
+    """Cambiar coma decimal por punto
+    Y transformar a categórica o numérica si procede"""
+    
+    for col in colfloat:
+        df[col] = (
+            df[col]
+            .astype("string")
+            .str.strip()
+            .str.replace(",", ".", regex=False)
+        )
+        df[col] = pd.to_numeric(df[col], errors="raise")
+
+    df = df.astype({
+        **{col: "Int64" for col in colnumeric},
+        **{col: "category" for col in colcat},
+    })
+    return df
+
+
+
+def obtener_codigo_INE(df):
+    """Formula definida para extraer un valor específico de una columna específica de varios dfs
+    El valor extraido es el ultimo del primer diccionario que encontramos"""
+    try:
+        elementos = json.loads(df) if isinstance(df, str) else df
+        if isinstance(elementos, list):
+            for item in elementos:
+                variable = item.get('T3_Variable', '').lower()
+                # Sirve tanto para 'PUNTOS TURÍSTICOS' (flujo) como para 'Municipios' (padrón)
+                if 'punto' in variable or 'muni' in variable:
+                    return item.get('Codigo')
+    except (json.JSONDecodeError, TypeError, IndexError):
+        return None
+    return None
+
+def obtener_codigo_provincia_INE(df):
+    try:
+        elementos = json.loads(df) if isinstance(df, str) else df
+        if isinstance(elementos, list):
+            for item in elementos:
+                # Buscamos únicamente la dimensión de Provincias
+                if 'prov' in item.get('T3_Variable', '').lower():
+                    return item.get('Codigo')
+    except Exception:
+        return None
+    return None
 
 def crear_fecha(
     df: pd.DataFrame,
-    col_anyo: str = "Anyo",
+    col_anyo: str = 'Anyo',
     col_periodo: str = "Periodo",
     col_prov: str = "COD_PROV",
     nombre_col_fecha: str = "Fecha",

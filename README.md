@@ -1,31 +1,55 @@
-# TFM - Pipeline de datos turisticos (España)
+# TUI Group - Gestión Estratégica del Turismo (España)
 
-Pipeline de extraccion de datos abiertos para un dataset relacional de turismo por municipio/provincia/CCAA.
+Dashboard analítico interactivo desarrollado para la toma de decisiones y gestión turística estratégica de TUI Group en España (TFM). Combina datos del INE, cartografía oficial y puntos de interés de OpenStreetMap para clasificar las provincias según su saturación y potencial turístico (clustering K-Means), integrando además prescripciones estratégicas generadas mediante Inteligencia Artificial conectada a Google Gemini.
 
-## Fuentes
+🌐 **Aplicación web desplegada en Azure:**  
+[https://dashboardtuispain-augjh4a0h9arbpan.spaincentral-01.azurewebsites.net/](https://dashboardtuispain-augjh4a0h9arbpan.spaincentral-01.azurewebsites.net/)
 
-| Fuente | Clave | Datos | Extractor |
-|---|---|---|---|
-| **INE** (Tempus3) | No | Poblacion, flujos turisticos | `ine_extractor.py` |
-| **IGN / CartoCiudad** | No | Geocodificacion municipal | `ign_extractor.py` |
-| **OpenStreetMap** | No | POIs turisticos | `osm_extractor.py` |
-| **datos.gob.es** | No | Datasets abiertos | `datosgob_extractor.py` |
-| **AEMET OpenData** | Si (gratuita) | Prediccion meteorologica | `aemet_extractor.py` |
+---
 
-## Instalacion
+## Requisitos previos
 
+- Python 3.10 o superior (compatible con 3.11 y 3.12).
+- Clave de API de Google Gemini (Google AI Studio) para las consultas de IA.
+
+---
+
+## Instalación
+
+1. **Crear y activar entorno virtual:**
+   - **Windows:**
+     ```powershell
+     python -m venv .venv
+     .\.venv\Scripts\Activate.ps1
+     ```
+   - **Linux / macOS:**
+     ```bash
+     python3 -m venv .venv
+     source .venv/bin/activate
+     ```
+
+2. **Instalar dependencias:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Configurar variables de entorno:**
+   Copia el archivo `.env.example` a `.env` y añade tu clave:
+   ```env
+   GEMINI_API_KEY=tu_clave_de_gemini
+   ```
+
+---
+
+## Ejecución
+
+### Dashboard interactivo (Streamlit)
 ```bash
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-copy .env.example .env
+streamlit run dashboard/app.py
 ```
+Se abrirá automáticamente en tu navegador en `http://localhost:8501`.
 
-## Ejecucion
-
+*(Opcional)* Para ejecutar el pipeline de extracción de datos abiertos:
 ```bash
-python main.py
-python main.py --sources Carto_provincias clima_aemet
+python Extractor/main.py
 ```
-
-CSV en `data/processed/`.

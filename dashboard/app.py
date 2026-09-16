@@ -37,7 +37,7 @@ load_dotenv(dotenv_path=RUTA_ENV_DEFECTO)
 def cargar_datos_provinciales(ruta_csv: str = None) -> pd.DataFrame:
     """
     Carga el dataset provincial TurismoProvincia.csv, valida su dimension
-    (52 provincias, 24 columnas) y normaliza cod_prov a cadena de 2 digitos con zfill(2).
+    (50 provincias, 24 columnas) y normaliza cod_prov a cadena de 2 digitos con zfill(2).
     """
     if ruta_csv is None:
         ruta_csv = RUTA_CSV_DEFECTO
@@ -49,8 +49,14 @@ def cargar_datos_provinciales(ruta_csv: str = None) -> pd.DataFrame:
     df = pd.read_csv(ruta_csv, sep=";", encoding="utf-8")
     df["cod_prov"] = df["cod_prov"].astype(str).str.strip().str.zfill(2)
 
-    if len(df) != 52:
-        raise ValueError(f"Se esperaban 52 provincias, pero se obtuvieron {len(df)}.")
+    # Garantizar asignacion correcta de clusters de saturacion:
+    # 0: 'Muy saturados' (Baleares, Canarias), 1: 'No saturados' (interior), 2: 'Saturados'
+    mapa_saturacion = {0: "Muy saturados", 1: "No saturados", 2: "Saturados"}
+    if "cluster_saturacion" in df.columns:
+        df["saturacion"] = df["cluster_saturacion"].astype(int).map(mapa_saturacion)
+
+    if len(df) != 50:
+        raise ValueError(f"Se esperaban 50 provincias, pero se obtuvieron {len(df)}.")
     if df.isnull().sum().sum() != 0:
         raise ValueError("El dataset provincial contiene valores nulos no admitidos.")
 
@@ -61,6 +67,7 @@ def cargar_datos_provinciales(ruta_csv: str = None) -> pd.DataFrame:
 def cargar_geojson(ruta_geojson: str = None) -> dict:
     """
     Carga la cartografia provincial simplificada de España en formato GeoJSON.
+    Filtra Ceuta y Melilla (codigos 51 y 52) para coincidir con las 50 provincias del dataset.
     """
     if ruta_geojson is None:
         ruta_geojson = RUTA_GEOJSON_DEFECTO
@@ -72,8 +79,17 @@ def cargar_geojson(ruta_geojson: str = None) -> dict:
     with open(ruta_geojson, "r", encoding="utf-8") as f:
         geo_dict = json.load(f)
 
-    if geo_dict.get("type") != "FeatureCollection" or len(geo_dict.get("features", [])) != 52:
-        raise ValueError("El archivo GeoJSON debe ser una FeatureCollection valida con 52 entidades provinciales.")
+    if geo_dict.get("type") != "FeatureCollection":
+        raise ValueError("El archivo GeoJSON debe ser una FeatureCollection valida.")
+
+    # Excluir Ceuta (51) y Melilla (52) si estan presentes en el GeoJSON
+    geo_dict["features"] = [
+        f for f in geo_dict.get("features", [])
+        if str(f.get("properties", {}).get("COD_PROV", "")).strip().zfill(2) not in ["51", "52"]
+    ]
+
+    if len(geo_dict["features"]) != 50:
+        raise ValueError(f"Se esperaban 50 entidades provinciales tras excluir Ceuta y Melilla, pero se obtuvieron {len(geo_dict['features'])}.")
 
     return geo_dict
 
@@ -127,40 +143,37 @@ except Exception as error_general_geo:
 #-------------------------------------------------------------------------------------------------
 # PALETAS Y ORDEN
 
-#Nota: he intentado cuadrar la paleta del notebook EDA_y_clustering
-#Nota, aqui se usan cuadrados generados por VSCode, desconozco si en otros IDEs se emplean
+# Cluster 1: Saturacion (3 agrupaciones: 0: 'Muy saturados', 1: 'No saturados', 2: 'Saturados')
 PALETA_SATURACION = {
-    "Desaprovechado": "#66C2A5",
-    "Destinos maduros": "#f39c12",
-    "Grandes metrópolis": "#FFD92F",
-    "Grandes metropolis": "#FFD92F",
-    "Hipersaturado": "#B3B3B3",
+    "No saturados": "#66C2A5",     # Verde azulado / turquesa suave (baja presion turistica)
+    "Saturados": "#f39c12",        # Naranja / ambar (tension media-alta)
+    "Muy saturados": "#e74c3c",    # Rojo coral / alerta (alta saturacion estival)
 }
 
 ORDEN_SATURACION = [
-    "Desaprovechado",
-    "Destinos maduros",
-    "Grandes metrópolis",
-    "Hipersaturado"
+    "No saturados",
+    "Saturados",
+    "Muy saturados"
 ]
 
-# Paleta de potencial, igual que en saturacion
-
+# Cluster 2: Potencial (5 agrupaciones: 0: 'Medio', 1: 'Alto', 2: 'Muy alto', 3: 'Muy bajo', 4: 'Bajo')
 PALETA_POTENCIAL = {
-    "Potencial bajo": "#B3B3B3",       # Azul pizarra
-    "Ciudades pequeñas": "#20b2aa",    # Cian / turquesa suave (enclaves reducidos)
-    "Potencial alto": "#FFD92F",       # Amarillo dorado (gran capacidad y dinamismo)
-    "Destinos estrella": "#8DA0CB",    # Verde esmeralda brillante (maxima rentabilidad)
+    "Muy alto": "#2ecc71",         # Verde vivo (maxima capacidad y dinamismo)
+    "Alto": "#3498db",             # Azul (alto atractivo y recursos)
+    "Medio": "#FFD92F",            # Amarillo dorado (capacidad intermedia)
+    "Bajo": "#e67e22",             # Naranja tierra (capacidad reducida)
+    "Muy bajo": "#B3B3B3",         # Gris pizarra (minimo potencial)
 }
 
 ORDEN_POTENCIAL = [
-    "Potencial bajo",
-    "Ciudades pequeñas",
-    "Potencial alto",
-    "Destinos estrella"
+    "Muy alto",
+    "Alto",
+    "Medio",
+    "Bajo",
+    "Muy bajo"
 ]
 
-# Diccionario de metricas cuantitativas de TurismoProvincia para comparativas
+# Diccionario de metricas cuantitativas de TurismoProvincia para comparativas. funciona como desplegable
 METRICAS_NUMERICAS = {
     "presion_turistica_hab": "Presion turistica (viajeros por habitante)",
     "viajeros_hotel_anual": "Viajeros hoteleros anuales",
@@ -186,20 +199,20 @@ METRICAS_NUMERICAS = {
 st.sidebar.title("Filtros Globales")
 st.sidebar.markdown("Configure los filtros macro aplicables a los mapas provinciales y a la comparativa provincial.")
 
-# Filtro por comunidad autonoma (con y sin tilde para cumplimiento estricto)
+# Filtro por comunidad autonoma
 lista_ccaa = ["Todas"] + sorted(df_provincial["comunidad_autonoma"].unique().tolist())
 filtro_ccaa = st.sidebar.selectbox("Comunidad Autonoma", options=lista_ccaa, index=0)
 
-lista_saturacion = ["Todos"] + sorted(df_provincial["saturacion"].unique().tolist())
+lista_saturacion = ["Todos"] + [c for c in ORDEN_SATURACION if c in df_provincial["saturacion"].unique()] + [c for c in sorted(df_provincial["saturacion"].unique()) if c not in ORDEN_SATURACION]
 filtro_saturacion = st.sidebar.selectbox("Cluster Saturacion", options=lista_saturacion, index=0)
 
-lista_potencial = ["Todos"] + sorted(df_provincial["potencial"].unique().tolist())
+lista_potencial = ["Todos"] + [c for c in ORDEN_POTENCIAL if c in df_provincial["potencial"].unique()] + [c for c in sorted(df_provincial["potencial"].unique()) if c not in ORDEN_POTENCIAL]
 filtro_potencial = st.sidebar.selectbox("Cluster Potencial", options=lista_potencial, index=0)
 
 # Aplicacion de filtros macro sobre el dataset para Tabs 1, 2 y 3
 df_filtrado = df_provincial.copy()
 
-if filtro_ccaa != "Todas":  #Logica: si no es Todos/as, aplica un filtro basico de pandas. repide para los 3 filtros de la barra lateral
+if filtro_ccaa != "Todas":  #Logica: si no es Todos/as, aplica un filtro basico de pandas. repiye para los 3 filtros de la barra lateral
     df_filtrado = df_filtrado[df_filtrado["comunidad_autonoma"] == filtro_ccaa]
 if filtro_saturacion != "Todos":
     df_filtrado = df_filtrado[df_filtrado["saturacion"] == filtro_saturacion]
@@ -220,10 +233,13 @@ lista_provincias_ordenadas = sorted(
     key=normalizar_para_orden
 )
 
+# Seleccion inicial por defecto: Madrid
+idx_defecto_prov = lista_provincias_ordenadas.index("Madrid") if "Madrid" in lista_provincias_ordenadas else 0
+
 provincia_seleccionada = st.sidebar.selectbox(
     "Seleccionar Provincia",
     options=lista_provincias_ordenadas,
-    index=0
+    index=idx_defecto_prov
 )
 
 
@@ -249,12 +265,12 @@ tab_sat, tab_pot, tab_cuad, tab_ficha, tab_ia = st.tabs([
 with tab_sat:
     st.subheader("Mapa de Saturacion Turistica Provincial") #Titulo
     st.markdown(
-        "Distribucion cartografica de las 52 provincias según su clasificación en clusters de "
+        "Distribucion cartografica de las 50 provincias según su clasificación en clusters de "
         "saturación turística, evaluando la presion por habitante, la ocupación hotelera media y la estacionalidad."
     ) #Subtitulo
 
     if df_filtrado.empty:
-        st.warning("No hay provincias que coincidan con los filtros seleccionados. Por favor, ajuste los filtros en la barra lateral.")
+        st.warning("No hay provincias que coincidan con los filtros seleccionados.")
     else:
         fig_sat = px.choropleth(
             data_frame=df_filtrado,
@@ -299,12 +315,12 @@ with tab_sat:
 
 
 #-----------------------------------------------------------------------
-# PANTALLA 2: MAPA DE SATURACION
+# PANTALLA 2: MAPA DE POTENCIAL
 
 with tab_pot:
     st.subheader("Mapa de Potencial Turistico Provincial")
     st.markdown(
-        "Distribucion cartografica de las 52 provincias españolas segun su clasificacion en clusters de "
+        "Distribucion cartografica de las 50 provincias españolas segun su clasificacion en clusters de "
         "potencial turistico y rendimiento comercial, combinando volumen de viajeros, tarifas hoteleras y capacidad rural."
     )
 
@@ -356,8 +372,8 @@ with tab_pot:
 
 
 # -----------------------------------------------------------------------------
-# TAB 3: COMPARATIVA PROVINCIAL (COLUMNAS HORIZONTALES)
-# -----------------------------------------------------------------------------
+#3: COMPARATIVA PROVINCIAL (COLUMNAS HORIZONTALES)
+
 with tab_cuad:
     st.subheader("Comparativa Provincial por Columnas Horizontales")
     st.markdown(
@@ -399,7 +415,7 @@ with tab_cuad:
         # En Plotly con autorange='reversed', el primer elemento de la lista aparece arriba.
         if orden_opcion == "Menor a mayor":
             df_grafico = df_grafico.sort_values(by=metrica_seleccionada, ascending=True)
-        elif orden_opcion == "Mayor a menor)":
+        elif orden_opcion == "Mayor a menor":
             df_grafico = df_grafico.sort_values(by=metrica_seleccionada, ascending=False)
         else:
             df_grafico = df_grafico.sort_values(by="provincia", ascending=True) #Tercera opcion, en alfabetico
@@ -409,7 +425,7 @@ with tab_cuad:
         # Configuracion de color segun lo marcado al inicio del archivo
         if color_opcion == "Cluster Saturacion":
             columna_color = "saturacion"
-            mapa_colores = PALETA_SATURACION
+            mapa_colores = PALETA_SATURACION #Usamos paleta del inicio
             titulo_leyenda = "Cluster Saturacion"
             orden_categorias = {"saturacion": ORDEN_SATURACION}
         elif color_opcion == "Cluster Potencial":
@@ -462,7 +478,7 @@ with tab_cuad:
             cliponaxis=False
         )
 
-        # Linea de referencia para la media nacional
+        # linea de media nacional
         media_nacional = float(df_provincial[metrica_seleccionada].mean())
         texto_media = f"Media Nacional: {media_nacional:.2f}" if es_decimal else f"Media Nacional: {media_nacional:,.0f}"
         fig_bar.add_vline(
@@ -536,8 +552,8 @@ with tab_cuad:
 
 
 # -----------------------------------------------------------------------------
-# TAB 4: FICHA PROVINCIAL
-# -----------------------------------------------------------------------------
+#4: FICHA PROVINCIAL
+
 with tab_ficha:
     st.subheader(f"Ficha Estrategica Provincial: {provincia_seleccionada}")
     st.markdown("Indicadores detallados de capacidad, demanda hotelera, estacionalidad y puntos de interes turistico.")
@@ -545,7 +561,7 @@ with tab_ficha:
     fila_provincia = df_provincial[df_provincial["provincia"] == provincia_seleccionada].iloc[0]
     cod_prov_sel = str(fila_provincia["cod_prov"]).zfill(2)
 
-    # Bloque de metricas clave estructuradas en tarjetas st.metric (al menos 6 metricas)
+    # Bloque de metricas clave estructuradas en tarjetas st.metric
     col_m1, col_m2, col_m3 = st.columns(3)
     with col_m1:
         st.metric(
@@ -623,11 +639,20 @@ with tab_ficha:
 
             st.caption(f"Visualizando {len(df_pois_mostrar)} puntos de interes de un total de {len(df_pois_provincia)} en la provincia.")
 
+            # Centro del mapa: Madrid (lat=40.4168, lon=-3.7038) como coordenada de referencia inicial y fallback
+            if not df_pois_mostrar.empty and pd.notnull(df_pois_mostrar["latitud"]).any():
+                lat_centro = float(df_pois_mostrar["latitud"].mean())
+                lon_centro = float(df_pois_mostrar["longitud"].mean())
+            else:
+                lat_centro = 40.4168
+                lon_centro = -3.7038
+
             # Mapa interactivo de POIs utilizando px.scatter_map (compatible con Plotly 7.0+)
             fig_pois = px.scatter_map(
                 data_frame=df_pois_mostrar,
                 lat="latitud",
                 lon="longitud",
+                center={"lat": lat_centro, "lon": lon_centro},
                 color="categoria",
                 hover_name="nombre",
                 hover_data={
@@ -638,11 +663,17 @@ with tab_ficha:
                     "cod_prov": False
                 },
                 zoom=8,
+                map_style="open-street-map",
                 title=f"Ubicacion de POIs - {provincia_seleccionada}"
             )
             fig_pois.update_layout(
                 margin={"r": 0, "t": 40, "l": 0, "b": 0},
-                height=550
+                height=550,
+                map=dict(
+                    style="open-street-map",
+                    center=dict(lat=lat_centro, lon=lon_centro),
+                    zoom=8
+                )
             )
             st.plotly_chart(fig_pois, width='stretch')
 
@@ -659,8 +690,8 @@ with tab_ficha:
 
 
 # -----------------------------------------------------------------------------
-# TAB 5: CONSULTA IA
-# -----------------------------------------------------------------------------
+# PANTALLA 5: CONSULTA IA
+
 with tab_ia:
     st.subheader("Consulta Estrategica Asistida por Inteligencia Artificial")
     st.markdown(
@@ -751,7 +782,9 @@ DIRECTRICES OBLIGATORIAS:
         with st.expander("Ver detalle del prompt estructurado", expanded=False):
             st.code(prompt_completo, language="markdown")
 
-        api_key_gemini = os.getenv("GEMINI_API_KEY")
+### EN CASO NORMAL MANTENGO ESTA FILA PARA ACCEDER AL .env PERO POR LA PRESENTACIÓN Y GITHUB DEJO LA CLAVE TEMPORAL
+        api_key_gemini ="AQ.Ab8RN6Jqo3Z-sEI9-XHGC9vxDQGHnuJNaHQqDiaZR9eRUVBA2g"
+        #api_key_gemini = os.getenv("GEMINI_API_KEY")
         if not api_key_gemini or not api_key_gemini.strip():
             st.error("No se ha encontrado la clave GEMINI_API_KEY en el archivo .env. Por favor, configure una clave valida.")
         else:

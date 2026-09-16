@@ -49,8 +49,8 @@ class TuiTourismAI:
         provincia = datos.get("provincia", "Desconocida")
         cod_prov = datos.get("cod_prov", "--")
         cuadrante = datos.get("cuadrante", datos.get("cuadrante_estrategico", "Sin clasificar"))
-        sat_nom = datos.get("cluster_saturacion_nom", "Saturación Media")
-        pot_nom = datos.get("cluster_potencial_nom", "Potencial Medio")
+        sat_nom = datos.get("cluster_saturacion_nom", datos.get("saturacion", "Saturados"))
+        pot_nom = datos.get("cluster_potencial_nom", datos.get("potencial", "Medio"))
 
         # Intentar llamar a Gemini API si está activo
         if self.active and self.client:
@@ -62,8 +62,8 @@ Analiza los siguientes datos reales, oficiales y georreferenciados de la provinc
 
 --- 1. POSICIONAMIENTO ESTRATÉGICO (MODELO BI-DIMENSIONAL DE CLUSTERING) ---
 - Provincia: {provincia} (Código INE: {cod_prov})
-- Dimensión Demanda/Presión: {sat_nom}
-- Dimensión Recursos y Capacidad: {pot_nom}
+- Dimensión Demanda/Presión (Cluster Saturación: 0: 'Muy saturados', 1: 'No saturados', 2: 'Saturados'): {sat_nom}
+- Dimensión Recursos y Capacidad (Cluster Potencial: 0: 'Medio', 1: 'Alto', 2: 'Muy alto', 3: 'Muy bajo', 4: 'Bajo'): {pot_nom}
 - Cuadrante Estratégico Asignado: {cuadrante}
 
 --- 2. DEMANDA Y CAPACIDAD DE ABSORCIÓN EN TEMPORADA BAJA (INE) ---
@@ -115,6 +115,8 @@ Sé riguroso, cuantitativo y con mentalidad de negocio turístico responsable.
         prov = d.get("provincia", "Provincia")
         cod = d.get("cod_prov", "--")
         cuad = d.get("cuadrante", d.get("cuadrante_estrategico", "Oportunidad de Diversificación"))
+        sat_nom = d.get("cluster_saturacion_nom", d.get("saturacion", "Saturados"))
+        pot_nom = d.get("cluster_potencial_nom", d.get("potencial", "Medio"))
         viajeros = d.get("viajeros_total", 0)
         ocup = d.get("ocupacion_hotel_media", 45.0)
         valle = d.get("margen_hotel_valle", 2500)
@@ -129,7 +131,7 @@ Sé riguroso, cuantitativo y con mentalidad de negocio turístico responsable.
 *(Dictamen generado por el Motor Estratégico TUI Decision Engine)*
 
 ### 1. Diagnóstico de Tensión Turística y Capacidad
-La provincia de **{prov} (código {cod})** se sitúa en el cuadrante **{cuad}**. Presenta un volumen anual aproximado de **{viajeros:,.0f} viajeros**, con una ocupación media hotelera del **{ocup:.1f}%**.
+La provincia de **{prov} (código {cod})** se sitúa en el cuadrante **{cuad}** (Saturación: **{sat_nom}**, Potencial: **{pot_nom}**). Presenta un volumen anual aproximado de **{viajeros:,.0f} viajeros**, con una ocupación media hotelera del **{ocup:.1f}%**.
 - **Margen de absorción disponible en temporada valle:** Existen unas **{valle:,.0f} plazas hoteleras vacantes** fuera de temporada alta y **{rural:,.0f} plazas rurales ociosas**, lo que demuestra que el destino cuenta con infraestructura ya amortizada para acoger más visitantes sin necesidad de construir nueva planta alojativa.
 
 ### 2. Detección de Activos Territoriales Ocultos (OpenStreetMap)
@@ -153,7 +155,7 @@ El análisis espacial de los 170k POIs de OpenStreetMap revela una riqueza notab
 
     def responder_consulta_analista(self, pregunta: str, df_contexto: pd.DataFrame) -> str:
         """
-        Responde a preguntas analíticas en lenguaje natural sobre las 52 provincias.
+        Responde a preguntas analíticas en lenguaje natural sobre las 50 provincias (Ceuta y Melilla suprimidas).
         """
         cols = [c for c in ["provincia", "cod_prov", "viajeros_total", "ocupacion_hotel_media", "margen_hotel_valle", "total_poi_osm", "cuadrante"] if c in df_contexto.columns]
         muestra_csv = df_contexto[cols].head(35).to_csv(index=False)
@@ -161,7 +163,7 @@ El análisis espacial de los 170k POIs de OpenStreetMap revela una riqueza notab
         if self.active and self.client:
             prompt = f"""
 Eres el Asistente Analítico de Datos de TUI Group para España.
-Dispones de este extracto de datos de las provincias españolas:
+Dispones de este extracto de datos de las 50 provincias españolas (Ceuta y Melilla suprimidas):
 
 {muestra_csv}
 

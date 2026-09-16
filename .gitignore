@@ -8,8 +8,9 @@ Extractor/data/raw/osm_provincias_cache
 # Secretos
 .env
 
-# Datos (opcional: comenta estas líneas si SÍ quieres versionar los CSV generados)
-Extractor/data/processed/*
+# Datos procesados (versionados para permitir la ejecución directa en local y Colab)
+# Extractor/data/processed/*
+!Extractor/data/processed/*.csv
 !Extractor/data/processed/pois_espana_osm.parquet
 !Extractor/data/processed/.gitkeep
 !Extractor/data/raw/.gitkeep

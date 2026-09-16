@@ -28,7 +28,7 @@ class TuiTourismAI:
     """
 
     def __init__(self, api_key: Optional[str] = None):
-        self.api_key = api_key or os.getenv("GEMINI_API_KEY", "")
+        self.api_key = (api_key or os.getenv("GEMINI_API_KEY", "")).strip()
         self.client = None
         self.model_name = "gemini-3.6-flash"
         self.active = False
@@ -89,7 +89,14 @@ Genera un dictamen ejecutivo en formato Markdown profesional con estas 4 seccion
 
 Sé riguroso, cuantitativo y con mentalidad de negocio turístico responsable.
 """
-            for m_candidate in ["gemini-3.6-flash", "gemini-3.7-flash", "gemini-flash-latest"]:
+            for m_candidate in [
+                "gemini-2.5-flash",
+                "gemini-2.0-flash",
+                "gemini-1.5-flash",
+                "gemini-3.6-flash",
+                "gemini-3.7-flash",
+                "gemini-flash-latest",
+            ]:
                 try:
                     resp = self.client.models.generate_content(
                         model=m_candidate,
@@ -174,7 +181,14 @@ Instrucciones:
 - Cita siempre datos numéricos exactos de las provincias relevantes (plazas, ocupación, POIs).
 - Si te piden comparaciones o rankings, lista las provincias en viñetas ordenadas.
 """
-            for m_candidate in ["gemini-3.6-flash", "gemini-3.7-flash", "gemini-flash-latest"]:
+            for m_candidate in [
+                "gemini-2.5-flash",
+                "gemini-2.0-flash",
+                "gemini-1.5-flash",
+                "gemini-3.6-flash",
+                "gemini-3.7-flash",
+                "gemini-flash-latest",
+            ]:
                 try:
                     resp = self.client.models.generate_content(
                         model=m_candidate,

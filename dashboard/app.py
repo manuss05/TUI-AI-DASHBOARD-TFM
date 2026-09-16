@@ -792,10 +792,17 @@ DIRECTRICES OBLIGATORIAS:
         if not api_key_gemini or not api_key_gemini.strip():
             st.error("No se ha encontrado la clave GEMINI_API_KEY en el archivo .env. Por favor, configure una clave valida.")
         else:
+            api_key_gemini = api_key_gemini.strip()
             with st.spinner("Consultando al asesor de inteligencia artificial Gemini..."):
                 try:
                     cliente_genai = genai.Client(api_key=api_key_gemini)
-                    modelos_candidatos = ["gemini-3.6-flash", "gemini-3.5-flash", "gemini-flash-latest"]
+                    modelos_candidatos = [
+                        "gemini-2.5-flash",
+                        "gemini-2.0-flash",
+                        "gemini-1.5-flash",
+                        "gemini-3.6-flash",
+                        "gemini-flash-latest"
+                    ]
                     respuesta_ia = None
                     ultimo_error_gemini = None
 
@@ -824,5 +831,14 @@ DIRECTRICES OBLIGATORIAS:
                     st.markdown(respuesta_ia)
 
                 except Exception as error_ejecucion_ia:
-                    st.error(f"Error al comunicar con la API de Google Gemini: {error_ejecucion_ia}")
+                    error_str = str(error_ejecucion_ia)
+                    if "401" in error_str or "unauthenticated" in error_str.lower() or "access_token_type_unsupported" in error_str.lower():
+                        st.error(
+                            "Error de autenticación con Google Gemini (401 UNAUTHENTICATED): "
+                            "La clave GEMINI_API_KEY no es válida. Las claves oficiales de Google AI Studio deben comenzar por 'AIzaSy...'. "
+                            "Obtén una clave gratuita en: https://aistudio.google.com/app/apikey "
+                            "y configúrala en tu archivo .env (en local) o en Variables de entorno de Azure (en la nube)."
+                        )
+                    else:
+                        st.error(f"Error al comunicar con la API de Google Gemini: {error_ejecucion_ia}")
 

@@ -10,6 +10,9 @@ Extractor/data/raw/osm_provincias_cache
 
 # Datos (opcional: comenta estas líneas si SÍ quieres versionar los CSV generados)
 Extractor/data/processed/*
+!Extractor/data/processed/pois_espana_osm.parquet
+!Extractor/data/processed/.gitkeep
+!Extractor/data/raw/.gitkeep
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 tfm-turismo-espana.zip

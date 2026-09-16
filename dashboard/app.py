@@ -26,6 +26,8 @@ DIRECTORIO_RAIZ = DIRECTORIO_ACTUAL.parent
 RUTA_CSV_DEFECTO = DIRECTORIO_RAIZ / "Datos procesados" / "Datos pulidos" / "TurismoProvincia.csv"
 RUTA_GEOJSON_DEFECTO = DIRECTORIO_ACTUAL / "provincias.geojson"
 RUTA_PARQUET_DEFECTO = DIRECTORIO_RAIZ / "Extractor" / "data" / "processed" / "pois_espana_osm.parquet"
+if not RUTA_PARQUET_DEFECTO.exists():
+    RUTA_PARQUET_DEFECTO = DIRECTORIO_RAIZ / "Datos procesados" / "pois_espana_osm.parquet"
 RUTA_ENV_DEFECTO = DIRECTORIO_RAIZ / ".env"
 
 # Cargar variables de entorno desde .env
@@ -105,7 +107,11 @@ def cargar_pois_provincia(cod_prov: str, ruta_parquet: str = None) -> pd.DataFra
     ruta_parquet = Path(ruta_parquet)
 
     if not ruta_parquet.exists():
-        raise FileNotFoundError(f"Archivo Parquet de POIs no encontrado: {ruta_parquet}")
+        ruta_alt = DIRECTORIO_RAIZ / "Datos procesados" / "pois_espana_osm.parquet"
+        if ruta_alt.exists():
+            ruta_parquet = ruta_alt
+        else:
+            raise FileNotFoundError(f"Archivo Parquet de POIs no encontrado: {ruta_parquet}")
 
     cod_prov_normalizado = str(cod_prov).strip().zfill(2)
     columnas_poda = ["cod_prov", "nombre", "categoria", "subtipo", "latitud", "longitud"]

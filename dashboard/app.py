@@ -782,9 +782,7 @@ DIRECTRICES OBLIGATORIAS:
         with st.expander("Ver detalle del prompt estructurado", expanded=False):
             st.code(prompt_completo, language="markdown")
 
-### EN CASO NORMAL MANTENGO ESTA FILA PARA ACCEDER AL .env PERO POR LA PRESENTACIÓN Y GITHUB DEJO LA CLAVE TEMPORAL
-        api_key_gemini ="AQ.Ab8RN6Jqo3Z-sEI9-XHGC9vxDQGHnuJNaHQqDiaZR9eRUVBA2g"
-        #api_key_gemini = os.getenv("GEMINI_API_KEY")
+        api_key_gemini = os.getenv("GEMINI_API_KEY")
         if not api_key_gemini or not api_key_gemini.strip():
             st.error("No se ha encontrado la clave GEMINI_API_KEY en el archivo .env. Por favor, configure una clave valida.")
         else:
